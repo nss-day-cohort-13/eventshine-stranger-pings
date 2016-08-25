@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'stranger_pings.app.stranger_pingsConfig',
+    'stranger_pings.apps.stranger_pingsConfig',
 ]
 
 MIDDLEWARE = [
