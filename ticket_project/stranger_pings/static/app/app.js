@@ -7,45 +7,45 @@ const app = angular
     $routeProvider 
       // since home is the default 'otherwise' page, we'll need to be able to check if the user is logged in or not. The ? after the 'user' route param allows the param to be null.
       .when("/home/:user?", {
-        templateUrl: "app/home.html", 
-        contoller: "Home", 
+        templateUrl: "../../static/app/partials/home.html", 
+        controller: "Home", 
         controllerAs: "home"
       })
       // Login and register use the same controller.
       .when("/login", {
-        templateUrl: "app/login.html", 
+        templateUrl: "../../static/app/partials/login.html", 
         controller: "LoginRegister", 
         controllerAs: "login"
       })
       .when("/register", {
-        templateUrl: "app/register.html",
+        templateUrl: "../../static/app/partials/user-register.html",
         controller: "LoginRegister", 
         controllerAs: "login"
       })
       // The 'view all events' saves the user optionally, so we can give the user add'l info about their events if needed.
       .when("/events/:user?", {
-        templateUrl: "app/events.html", 
+        templateUrl: "../../static/partials/events.html", 
         controller: "Events", 
         controllerAs: "events"
       })
       .when("/events/:user?/:event", {
-        templateUrl: "app/eventdetail.html", 
+        templateUrl: "../../static/partials/eventdetail.html", 
         controller: "Events", 
-        controllerAs: "events"
+        controllerAs: "allEvents"
       })
       .when("/events/:user/:event/register", {
-        templateUrl: "app/register.html", 
+        templateUrl: "../../static/partials/event-register.html", 
         controller: "EventRegister", 
         controllerAs: "eventRegister"
       })
       .when("myevents/:user", {
-        templateUrl: "app/myevents.html", 
-        controller: "myEvents", 
+        templateUrl: "../../static/partials/myevents.html", 
+        controller: "MyEvents", 
         controllerAs: "myEvents"
       })
       // This controller can create either an Event or a Venue.
       .when("/myevents/:user/create", {
-        templateUrl: "app/create.html", 
+        templateUrl: "../../static/partials/create.html", 
         controller: "Create", 
         controllerAs: "create"
       })
