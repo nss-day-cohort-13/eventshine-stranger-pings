@@ -14,6 +14,12 @@ class IndexView(generic.TemplateView):
 
 
 def create_user(request):
+    '''
+    Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
+
+    Values:
+        request = request object sent from Angular register from
+    '''
 
     UserName = request.POST['UserName']
     Password = request.POST['Password']
