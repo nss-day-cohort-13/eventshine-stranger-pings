@@ -13,4 +13,15 @@ app.controller("LoginRegister", function($scope, $http, $location) {
     $location.path(`/events/${login.current_user}`);
   };
 
+  login.goToRegister = () => {
+    $location.path("/register");
+  };
+
+  login.goToLogin = () => {
+    $location.path("/login");
+  };
+  login.goBack = () => {
+    $location.path("/");
+  };
+
 });

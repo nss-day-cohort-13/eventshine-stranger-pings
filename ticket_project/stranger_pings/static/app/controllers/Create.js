@@ -6,9 +6,9 @@ app.controller("Create", function($scope, $http, $location) {
   create.user_id = 1;
   create.event_id = 1;
 
-  function complete_creation() {
+  create.completeCreation = () => {
     console.log("completing creation and redirecting to event detail.");
-    $location.path(`/events/${create.user_id}/${create.event_id}`);
-  }
+    $location.path(`/myevents/${create.user_id}`);
+  };
 
 });
