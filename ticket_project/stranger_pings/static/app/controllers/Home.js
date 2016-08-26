@@ -5,6 +5,9 @@ app.controller("Home", function($scope, $http, $location) {
 
   home.goToLogin = () => {
     $location.path(`/login`);
+  }; 
+  home.goToRegister = () => {
+    $location.path(`/register`);
   };
 
 });

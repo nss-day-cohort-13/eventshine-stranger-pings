@@ -24,28 +24,28 @@ const app = angular
       })
       // The 'view all events' saves the user optionally, so we can give the user add'l info about their events if needed.
       .when("/events/:user?", {
-        templateUrl: "../../static/partials/events.html", 
+        templateUrl: "../../static/app/partials/events.html", 
         controller: "Events", 
-        controllerAs: "events"
+        controllerAs: "allEvents"
       })
       .when("/events/:user?/:event", {
-        templateUrl: "../../static/partials/eventdetail.html", 
+        templateUrl: "../../static/app/partials/eventdetail.html", 
         controller: "Events", 
         controllerAs: "allEvents"
       })
       .when("/events/:user/:event/register", {
-        templateUrl: "../../static/partials/event-register.html", 
+        templateUrl: "../../static/app/partials/event-register.html", 
         controller: "EventRegister", 
         controllerAs: "eventRegister"
       })
-      .when("myevents/:user", {
-        templateUrl: "../../static/partials/myevents.html", 
+      .when("/myevents/:user?", {
+        templateUrl: "../../static/app/partials/myevents.html", 
         controller: "MyEvents", 
         controllerAs: "myEvents"
       })
       // This controller can create either an Event or a Venue.
       .when("/myevents/:user/create", {
-        templateUrl: "../../static/partials/create.html", 
+        templateUrl: "../../static/app/partials/create.html", 
         controller: "Create", 
         controllerAs: "create"
       })
