@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stranger Pings Ticketing</title>
+  <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}">
+
+
+</head>
+<body>
+
+  <div ng-app="stranger_pings">
+    <div ng-view>
+      <div ng-controller="mainCtrl">
+        <h1>((title))</h1>
+      </div>
+    </div>
+  </div>
+
+<!-- Dependency Scripts -->
+<!-- <script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.js' %}"></script> -->
+<script type="text/javascript" src="{% static 'bower_components/angular/angular.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
+<!-- <script type="text/javascript" src="{% static 'lib/angular-bootstrap/ui-bootstrap-tpls.js' %}"></script> -->
+
+<!-- Our Scripts -->
+<script src="{% static 'app/app.js' %}"></script>
+<script src="{% static 'app/ticketController.js' %}"></script>
+</body>
+</html>
