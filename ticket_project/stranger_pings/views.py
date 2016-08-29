@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.views import generic
 from django.core import serializers
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Venue, Event, UserEvent
 
@@ -38,12 +39,41 @@ def ReturnUserEvents(request):
   return HttpResponse(data, content_type='application/json')
 
 
-def create_user(request):
+def login_user(request):
   '''
-  Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
+  Receives request from login form (or create_user def). Parses object by value (username, password), authenticates user & logins in the user
 
   Values:
-      request = request object sent from Angular register form
+      request = request object sent from login form or create_user def
+  '''
+  UserName = request.POST['username']
+  Password = request.POST['password']
+  user = authenticate(username=UserName, password=Password)
+  if user is not None:
+      login(request, user)
+      # Redirect to My Events Page
+  else:
+      pass
+      # Redirect to Login/Register Page
+
+
+def logout_user(request):
+  '''
+  Receives request from site & logs out current user, redirects to landing page
+
+  Values:
+      request = request object sent from site
+  '''
+  logout(request)
+  # Redirect to landing page
+
+
+def create_user(request):
+  '''
+  Receives request object from register form. Parses object by value (username, password, first_name, last_name), creates new user, saves to database & calls login_user def
+
+  Values:
+      request = request object sent from register form
   '''
 
   UserName = request.POST['UserName']
@@ -56,3 +86,4 @@ def create_user(request):
                                   first_name=FirstName,
                                   last_name=LastName)
   user.save()
+  login_user(request)
