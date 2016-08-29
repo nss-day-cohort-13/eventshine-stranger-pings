@@ -7,6 +7,3 @@ from django import forms
 from .models import Venue, Event, UserEvent
 
 # Create your views here.
-
-class IndexView(generic.TemplateView):
-  template_name = 'stranger_pings/index.html'
