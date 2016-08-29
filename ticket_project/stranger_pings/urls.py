@@ -8,6 +8,10 @@ event_patterns = [
   url(r'^user/$', views.ReturnUserEvents),
 ]
 
+venue_patterns = [
+  url(r'all/$', views.ReturnAllVenues)
+]
+
 urlpatterns = [
 
   url(r'^loggedin/', generic.TemplateView.as_view(template_name="stranger_pings/index.html"), name='index'),
@@ -16,7 +20,8 @@ urlpatterns = [
   # TODO: write register url.
 
   url(r'^events/', include(event_patterns)),
-  url(r'^register/$', views.create_user, name='create_user'),
-  url(r'^login_user/$', views.login_user, name='login_user')
+  url(r'^login_user/$', views.login_user, name='login_user'),
+  url(r'^venues/', include(venue_patterns)),
+  url(r'^register/$', views.create_user, name='create_user')
 
 ]
