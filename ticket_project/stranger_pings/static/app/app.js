@@ -1,8 +1,10 @@
 const app = angular
   .module("stranger_pings", ["ngRoute"])
-  .config(function($interpolateProvider, $routeProvider) {
+  .config(function($interpolateProvider, $routeProvider, $httpProvider) {
     $interpolateProvider.startSymbol('##');
     $interpolateProvider.endSymbol('##');
+    $httpProvider.defaults.xsrfCookieName = "csrftoken";
+    $httpProvider.defaults.xsrfHeaderName = "X-CSRFToken";
 
     $routeProvider
      // This app only handles users after they are logged in. See our django templates for the login and register and homepage functionality.
@@ -43,7 +45,7 @@ const app = angular
         }
       })
       // This controller can create either an Event or a Venue.
-      .when("/myevents/create/:whatToCreate", {
+      .when("/myevents/create/", {
         templateUrl: "../../static/app/partials/create.html",
         controller: "Create",
         controllerAs: "create"

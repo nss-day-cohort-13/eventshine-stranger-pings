@@ -6,7 +6,7 @@ from django.views import generic
 event_patterns = [
   url(r'^all/$', views.ReturnAllEvents),
   url(r'^user/$', views.ReturnUserEvents),
-  url(r'^create/$', views.createEvent),
+  url(r'^create/$', views.receive_event_form),
 ]
 
 venue_patterns = [

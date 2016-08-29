@@ -6,7 +6,7 @@ from django.views import generic
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-
+import json
 from .models import Venue, Event, UserEvent
 
 # Create your views here.
@@ -102,14 +102,14 @@ def receive_event_form(request):
   Values: 
     request = request object sent from event form
   '''
-
-  name = request.POST["name"]
-  description = request.POST["description"]
-  begin_date_time = request.POST["startTime"]
-  end_date_time = request.POST["endTime"]
-  tix_limit = request.POST["capacity"]
-  address = request.POST["address"]
-  venue = request.POST["venue"]
+  obj = json.loads(request.body.decode())
+  name = obj["name"]
+  description = obj["description"]
+  begin_date_time = obj["startTime"]
+  end_date_time = obj["endTime"]
+  tix_limit = obj["capacity"]
+  address = obj["address"]
+  venue = obj["venue"]
 
   event = Event.objects.create_event(name=name, 
                                     description=description, 
