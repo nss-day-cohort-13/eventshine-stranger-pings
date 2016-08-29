@@ -21,8 +21,8 @@ const app = angular
       })
       .when("/events/:event", {
         templateUrl: "../../static/app/partials/eventdetail.html",
-        controller: "Events",
-        controllerAs: "allEvents"
+        controller: "EventDetailCtrl",
+        controllerAs: "eventDetail"
       })
       .when("/events/:event/register", {
         templateUrl: "../../static/app/partials/event-register.html",
