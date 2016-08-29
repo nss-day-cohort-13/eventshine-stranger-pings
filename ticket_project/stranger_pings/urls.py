@@ -16,7 +16,7 @@ urlpatterns = [
   # TODO: write register url.
 
   url(r'^events/', include(event_patterns)),
-  url(r'^register/$', views.create_user, name='create_user')
+  url(r'^register/$', views.create_user, name='create_user'),
   url(r'^login_user/$', views.login_user, name='login_user')
 
 ]
