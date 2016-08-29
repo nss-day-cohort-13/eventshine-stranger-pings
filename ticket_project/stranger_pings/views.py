@@ -17,14 +17,10 @@ def ReturnAllEvents(request):
 
   return HttpResponse(data, content_type='application/json')
 
-# def ReturnUserEvents(request, user_id):
-#   user_events = UserEvent.objects.filter(user=user_id)
-#   event_ids = []
-#   for ue in user_events:
-#     event_ids.append(ue.event)
+def ReturnUserEvents(request):
+    user_id = request.user.id
 
-#   matched_events = []
-#   for key in event_ids:
-#     fetched = Event.objects.get(pk=key)
-#     matched_events.append(fetched)
+    user_events = set(Event.objects.filter(userevent__user=user_id))
+    data = serializers.serialize('json', user_events)
 
+    return HttpResponse(data, content_type='application/json')
