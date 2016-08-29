@@ -32,7 +32,15 @@ const app = angular
       .when("/myevents", {
         templateUrl: "../../static/app/partials/myevents.html",
         controller: "MyEvents",
-        controllerAs: "myEvents"
+        controllerAs: "myEvents",
+        resolve: {
+          eventData: function(AllEventFactory) {
+            return AllEventFactory.fetchAllEvents();
+          },
+          venueData: function(VenueFactory) {
+            return VenueFactory.fetchAllVenues();
+          }
+        }
       })
       // This controller can create either an Event or a Venue.
       .when("/myevents/create/:whatToCreate", {

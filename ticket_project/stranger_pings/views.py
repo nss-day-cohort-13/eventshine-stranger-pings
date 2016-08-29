@@ -7,15 +7,9 @@ from django.core import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
-
 from .models import Venue, Event, UserEvent
 
 # Create your views here.
-
-
-
-class IndexView(generic.TemplateView):
-  template_name = 'stranger_pings/index.html'
 
 def ReturnAllEvents(request):
   '''
@@ -99,3 +93,30 @@ def create_user(request):
                                   last_name=LastName)
   user.save()
   login_user(request)
+
+
+def receive_event_form(request):
+  '''
+  Receives request object from Angular 'create event' form. Parses object by value (name, description, begin time, end time, ticket limit, address, and venue), and saves to database. Returns true so the Angular controller can get on with its next thing. 
+
+  Values: 
+    request = request object sent from event form
+  '''
+
+  name = request.POST["name"]
+  description = request.POST["description"]
+  begin_date_time = request.POST["startTime"]
+  end_date_time = request.POST["endTime"]
+  tix_limit = request.POST["capacity"]
+  address = request.POST["address"]
+  # venue = request.POST["venue"]
+
+  event = Event.objects.create_event(name=name, 
+                                    description=description, 
+                                    begin_date_time=begin_date_time, 
+                                    end_date_time=end_date_time,
+                                    tix_limit=tix_limit,
+                                    address=address,
+                                    venue=venue)
+  event.save()
+  return True

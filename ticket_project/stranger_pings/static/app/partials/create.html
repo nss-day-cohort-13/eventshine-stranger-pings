@@ -1,4 +1,26 @@
-<h1>((create.title))</h1>
+<h1>## create.title ##</h1>
 
-<button ng-click="create.completeCreation()">Go to My Events.</button>
+<button ng-click="create.goToMyEvents()">Go to My Events.</button>
 
+<form ng-submit="create.completeCreation()">
+  <label for="name">Event Name
+    <input type="text" id="name" ng-model="create.name">
+  </label>
+  <label for="description">
+    <textarea id="description" ng-model="create.description">
+    </textarea>
+  </label>
+  <label for="startTime">
+    <input type="datetime-local" id="startTime" ng-model="create.startTime">
+  </label>
+  <label for="endTime">
+    <input type="datetime-local" id="endTime" ng-model="create.endTime">
+  </label>
+  <label for="capacity">
+    <input type="number" id="capacity" ng-model="create.capacity">
+  </label>
+  <label for="address">
+    <input type="text" id="address" ng-model="create.address">
+  </label>
+  <input type="submit" value="submit" />
+</form>
