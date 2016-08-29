@@ -2,7 +2,7 @@ app.controller("Create", function($scope, $http, $location, VenueFactory) {
   const create = this;
 
   // Constants.
-  create.title = "create an event page.";
+  create.title = "Create An Event.";
   create.venues = VenueFactory.getAllVenues();
 
   // Form data.
@@ -26,7 +26,6 @@ app.controller("Create", function($scope, $http, $location, VenueFactory) {
       create.goToMyEvents();
     });
     // TODO: also sign the user up for the event after the event is created.
-    // I need to reload the json.
   };
 
   create.goToMyEvents = () => {
