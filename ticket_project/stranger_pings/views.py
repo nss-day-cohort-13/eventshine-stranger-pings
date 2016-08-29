@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.views import generic
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Venue, Event, UserEvent
 
@@ -31,3 +32,20 @@ def create_user(request):
                                     first_name=FirstName,
                                     last_name=LastName)
     user.save()
+    login_user(request)
+
+
+def login_user(request):
+    UserName = request.POST['username']
+    Password = request.POST['password']
+    user = authenticate(username=UserName, password=Password)
+    if user is not None:
+        login(request, user)
+        # Redirect to My Events Page
+    else:
+        # Redirect to Login/Register Page
+
+
+def logout_user(request):
+    logout(request)
+    # Redirect to landing page
