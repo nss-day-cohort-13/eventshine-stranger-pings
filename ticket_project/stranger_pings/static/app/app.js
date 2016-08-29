@@ -1,8 +1,8 @@
 const app = angular
   .module("stranger_pings", ["ngRoute"])
   .config(function($interpolateProvider, $routeProvider) {
-    $interpolateProvider.startSymbol('((');
-    $interpolateProvider.endSymbol('))');
+    $interpolateProvider.startSymbol('##');
+    $interpolateProvider.endSymbol('##');
 
     $routeProvider
      // This app only handles users after they are logged in. See our django templates for the login and register and homepage functionality.

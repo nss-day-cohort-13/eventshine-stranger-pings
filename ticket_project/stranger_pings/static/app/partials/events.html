@@ -1,13 +1,13 @@
-<h1>((allEvents.title))</h1>
+<h1>## allEvents.title ##</h1>
 
 <div>
     <div ng-repeat="event in allEvents.events">
-        <p>((event.fields.name))</p>
-        <p>((event.fields.venue))</p>
-        <p>((event.fields.address))</p>
-        <p>((event.fields.begin_date_time))</p>
-        <p>((event.fields.end_date_time))</p>
-        <p>((event.fields.tix.limit))</p>
+        <p>## event.fields.name ##</p>
+        <p>## event.fields.venue ##</p>
+        <p>## event.fields.address ##</p>
+        <p>## event.fields.begin_date_time|dateFormat ##</p>
+        <p>## event.fields.end_date_time|dateFormat ##</p>
+        <p>## event.fields.tix.limit ##</p>
     </div>
 </div>
 
