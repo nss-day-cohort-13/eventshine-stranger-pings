@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.views import generic
 
@@ -59,15 +59,14 @@ def login_user(request):
   Values:
       request = request object sent from login form or create_user def
   '''
-  UserName = request.POST['username']
-  Password = request.POST['password']
+  UserName = request.POST['UserName']
+  Password = request.POST['Password']
   user = authenticate(username=UserName, password=Password)
   if user is not None:
       login(request, user)
-      # Redirect to My Events Page
+      return HttpResponseRedirect("/loggedin/#/myevents")
   else:
-      pass
-      # Redirect to Login/Register Page
+      return HttpResponseRedirect("/login")
 
 
 def logout_user(request):
@@ -78,7 +77,7 @@ def logout_user(request):
       request = request object sent from site
   '''
   logout(request)
-  # Redirect to landing page
+  return HttpResponseRedirect("/")
 
 
 def create_user(request):
