@@ -41,6 +41,16 @@ def ReturnUserEvents(request):
 
   return HttpResponse(data, content_type='application/json')
 
+def ReturnAllVenues(request):
+  '''
+  Receives request and returns JSON for all venues
+  Arguments:
+    request = request object
+  '''
+  venues = Venue.objects.all()
+  data = serializers.serialize('json', venues)
+
+  return HttpResponse(data, content_type='application/json')
 
 def login_user(request):
   '''
