@@ -109,7 +109,7 @@ def receive_event_form(request):
   end_date_time = request.POST["endTime"]
   tix_limit = request.POST["capacity"]
   address = request.POST["address"]
-  # venue = request.POST["venue"]
+  venue = request.POST["venue"]
 
   event = Event.objects.create_event(name=name, 
                                     description=description, 

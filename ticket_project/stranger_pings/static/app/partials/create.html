@@ -6,21 +6,23 @@
   <label for="name">Event Name
     <input type="text" id="name" ng-model="create.name">
   </label>
-  <label for="description">
+  <label for="description">Event Description
     <textarea id="description" ng-model="create.description">
     </textarea>
   </label>
-  <label for="startTime">
+  <label for="startTime">Event Start Time
     <input type="datetime-local" id="startTime" ng-model="create.startTime">
   </label>
-  <label for="endTime">
+  <label for="endTime">Event End Time
     <input type="datetime-local" id="endTime" ng-model="create.endTime">
   </label>
-  <label for="capacity">
+  <label for="capacity">Event Capacity
     <input type="number" id="capacity" ng-model="create.capacity">
   </label>
-  <label for="address">
+  <label for="address">Event Address
     <input type="text" id="address" ng-model="create.address">
   </label>
+  <label for="venues">Event Venue
+  <select class="form-control" ng-model="create.venue" ng-options={{create.venues.name}}></select>
   <input type="submit" value="submit" />
 </form>
