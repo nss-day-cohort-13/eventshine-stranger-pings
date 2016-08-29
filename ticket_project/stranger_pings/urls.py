@@ -22,6 +22,6 @@ urlpatterns = [
   url(r'^events/', include(event_patterns)),
   url(r'^login_user/$', views.login_user, name='login_user'),
   url(r'^venues/', include(venue_patterns)),
-  url(r'^register/$', views.create_user, name='create_user')
-
+  url(r'^register/$', views.create_user, name='create_user'),
+  url(r'^logout/$', views.logout_user, name='logout_user')
 ]
