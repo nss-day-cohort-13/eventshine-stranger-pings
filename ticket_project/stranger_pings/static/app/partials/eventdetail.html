@@ -1,4 +1,13 @@
-<h1>((allEvents.dettitle))</h1>
-<button ng-click="allEvents.detailBack('all')">Go Back to All Events</button>
-<button ng-click="allEvents.detailBack('my')">Go Back to My Events</button>
+<h1>## eventDetail.thisEvent.fields.name ##</h1>
+
+<div>
+    <p>## eventDetail.getVenueName(eventDetail.thisEvent.fields.venue) ##</p>
+    <p>## eventDetail.thisEvent.fields.address ##</p>
+    <p>Begins: ## eventDetail.thisEvent.fields.begin_date_time|dateFormat ##</p>
+    <p>Ends: ## eventDetail.thisEvent.fields.end_date_time|dateFormat ##</p>
+    <p>Capacity: ## eventDetail.thisEvent.fields.tix_limit ##</p>
+</div>
+
+<button ng-click="eventDetail.detailBack('all')">Go Back to All Events</button>
+<button ng-click="eventDetail.detailBack('my')">Go Back to My Events</button>
 <!-- we will also need to put a 'register' button here. -->
