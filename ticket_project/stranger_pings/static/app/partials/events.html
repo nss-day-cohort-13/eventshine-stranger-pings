@@ -4,10 +4,7 @@
   <div ng-repeat="event in allEvents.events">
     <p><a href="#/events/##event.pk##">## event.fields.name ##</a></p>
     <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-    <p>## event.fields.address ##</p>
-    <p>Begins: ## event.fields.begin_date_time|dateFormat ##</p>
-    <p>Ends: ## event.fields.end_date_time|dateFormat ##</p>
-    <p>## event.fields.tix.limit ##</p>
+    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
   </div>
 </div>
 

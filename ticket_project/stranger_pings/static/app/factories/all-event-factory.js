@@ -9,11 +9,18 @@ app.factory('AllEventFactory', function($http) {
     },
 
     setAllEvents: (data) => {
-      events = data;
+      allEvents = data;
     },
 
     getAllEvents: () => {
-      return events;
+      return allEvents;
+    },
+
+    getSingleEvent: (event_key) => {
+      events_filter = allEvents.filter((event) => {
+        return event.pk === event_key;
+      });
+      return events_filter[0];
     }
 
   };
