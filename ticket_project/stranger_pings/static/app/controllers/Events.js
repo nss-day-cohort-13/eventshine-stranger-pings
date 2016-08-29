@@ -3,10 +3,10 @@ app.controller("Events", function($scope, $http, $location, AllEventFactory, eve
 
   allEvents.events = eventData.data;
   AllEventFactory.setAllEvents(eventData.data);
+  console.log("eventData: ", eventData.data);
 
   allEvents.venues = venueData.data;
   VenueFactory.setAllVenues(venueData.data);
-  console.log("venueData: ", venueData.data);
 
   allEvents.title = "this is where you view all events.";
   allEvents.dettitle = "this is an events detail view.";
