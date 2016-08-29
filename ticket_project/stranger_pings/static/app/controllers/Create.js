@@ -3,12 +3,11 @@ app.controller("Create", function($scope, $http, $location) {
 
   // Temporary Constants.
   create.title = "create an event or venue page.";
-  create.user_id = 1;
   create.event_id = 1;
 
   create.completeCreation = () => {
     console.log("completing creation and redirecting to event detail.");
-    $location.path(`/myevents/${create.user_id}`);
+    $location.path(`/myevents`);
   };
 
 });

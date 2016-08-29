@@ -3,17 +3,16 @@ app.controller("Events", function($scope, $http, $location) {
 
   allEvents.title = "this is where you view all events.";
   allEvents.dettitle = "this is an events detail view.";
-  allEvents.current_user = 1;
   allEvents.clicked_event = 1;
 
   allEvents.goToMyEvents = () => {
     console.log("going to my events");
-    $location.path(`/myevents/${allEvents.current_user}`);
+    $location.path(`/myevents`);
   };
 
   allEvents.goToEventDetail = () => {
     console.log("going to an event detail.");
-    $location.path(`/events/${allEvents.current_user}/${allEvents.clicked_event}`);
+    $location.path(`/events/${allEvents.clicked_event}`);
   };
  
   allEvents.goToHome = () => {
@@ -24,10 +23,10 @@ app.controller("Events", function($scope, $http, $location) {
   allEvents.detailBack = (allOrMy) =>{
     console.log("going back. will pass whether the user clicked 'my events' or 'all events' back button here.");
     if (allOrMy === "all") {
-      $location.path(`/events/${allEvents.current_user}`);
+      $location.path(`/events`);
     }
     else {
-      $location.path(`/myevents/${allEvents.current_user}`);
+      $location.path(`/myevents`);
     }
   };
 });

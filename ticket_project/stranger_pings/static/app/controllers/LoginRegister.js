@@ -3,14 +3,13 @@ app.controller("LoginRegister", function($scope, $http, $location) {
 
   login.logtitle = "this is a log in page.";
   login.regtitle = "this is a register page.";
-  login.current_user = 1;
 
   login.goToMyEvents = () => {
-    $location.path(`/myevents/${login.current_user}`);
+    $location.path(`/myevents`);
   };
 
   login.goToAllEvents = () => {
-    $location.path(`/events/${login.current_user}`);
+    $location.path(`/events`);
   };
 
   login.goToRegister = () => {
