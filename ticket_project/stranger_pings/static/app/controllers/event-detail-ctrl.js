@@ -3,7 +3,6 @@ app.controller('EventDetailCtrl', function($routeParams, $location, AllEventFact
   const eventDetail = this;
 
   eventDetail.thisEvent = AllEventFactory.getSingleEvent(parseInt($routeParams.event));
-  console.log("thisEvent: ", eventDetail.thisEvent);
 
   eventDetail.getVenueName = (key) => {
     let allVenues = VenueFactory.getAllVenues();
