@@ -3,7 +3,6 @@ app.controller("Events", function($scope, $http, $location, AllEventFactory, eve
 
   allEvents.events = eventData.data;
   AllEventFactory.setAllEvents(eventData.data);
-  console.log("eventData: ", eventData.data);
 
   allEvents.venues = venueData.data;
   VenueFactory.setAllVenues(venueData.data);
