@@ -20,6 +20,7 @@ urlpatterns = [
   url(r'^login/', generic.TemplateView.as_view(template_name="stranger_pings/login.html"), name='login'),
   url(r'^loggedin/', generic.TemplateView.as_view(template_name="stranger_pings/index.html"), name='index'),
   url(r'^login_user/$', views.login_user, name='login_user'),
+  url(r'^logout/$', views.logout_user, name='logout_user'),
 
   url(r'^events/', include(event_patterns)),
   url(r'^venues/', include(venue_patterns)),
@@ -28,3 +29,4 @@ urlpatterns = [
   url(r'^register/', generic.TemplateView.as_view(template_name="stranger_pings/register.html")),
   url(r'^registered_user/$', views.create_user, name='create_user'),
 ]
+

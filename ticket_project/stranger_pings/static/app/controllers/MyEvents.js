@@ -26,7 +26,6 @@ app.controller("MyEvents", function($scope, $http, $location) {
   };
 
   myEvents.logOut = () => {
-    console.log("going to home. A logout will happen here.");
-    $location.path("/home");
+    window.location.assign('/logout/');
   };
 });
