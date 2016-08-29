@@ -43,6 +43,7 @@ def login_user(request):
         login(request, user)
         # Redirect to My Events Page
     else:
+        pass
         # Redirect to Login/Register Page
 
 
