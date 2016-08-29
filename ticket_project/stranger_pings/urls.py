@@ -10,4 +10,5 @@ event_patterns = [
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^events/', include(event_patterns)),
+    url(r'^register/$', views.create_user, name='create_user')
 ]

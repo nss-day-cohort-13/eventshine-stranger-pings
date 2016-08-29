@@ -14,9 +14,7 @@
 
   <div ng-app="stranger_pings">
     <div ng-view>
-      <div ng-controller="mainCtrl">
-        <h1>((title))</h1>
-      </div>
+    <!-- all views generated in partials. -->
     </div>
   </div>
 
@@ -28,6 +26,11 @@
 
 <!-- Our Scripts -->
 <script src="{% static 'app/app.js' %}"></script>
-<script src="{% static 'app/ticketController.js' %}"></script>
+<script src="{% static 'app/controllers/Create.js' %}"></script>
+<script src="{% static 'app/controllers/EventRegister.js' %}"></script>
+<script src="{% static 'app/controllers/Events.js' %}"></script>
+<script src="{% static 'app/controllers/Home.js' %}"></script>
+<script src="{% static 'app/controllers/LoginRegister.js' %}"></script>
+<script src="{% static 'app/controllers/MyEvents.js' %}"></script>
 </body>
 </html>
