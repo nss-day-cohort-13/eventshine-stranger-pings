@@ -18,7 +18,7 @@ def ReturnAllEvents(request):
   return HttpResponse(data, content_type='application/json')
 
 # def ReturnUserEvents(request, user_id):
-#   user_events = UserEvent.objects.get(user=user_id)
+#   user_events = UserEvent.objects.filter(user=user_id)
 #   event_ids = []
 #   for ue in user_events:
 #     event_ids.append(ue.event)
