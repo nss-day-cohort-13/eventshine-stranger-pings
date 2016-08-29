@@ -58,7 +58,7 @@ def login_user(request):
   user = authenticate(username=UserName, password=Password)
   if user is not None:
       login(request, user)
-      return HttpResponseRedirect("/loggedin/#/myevents")
+      return HttpResponseRedirect("/loggedin/#/events")
   else:
       return HttpResponseRedirect("/login")
 
