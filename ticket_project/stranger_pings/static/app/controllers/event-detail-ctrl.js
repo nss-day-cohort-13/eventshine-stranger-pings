@@ -1,4 +1,4 @@
-app.controller('EventDetailCtrl', function($routeParams, AllEventFactory, VenueFactory) {
+app.controller('EventDetailCtrl', function($routeParams, $location, AllEventFactory, VenueFactory) {
 
   const eventDetail = this;
 
@@ -11,6 +11,15 @@ app.controller('EventDetailCtrl', function($routeParams, AllEventFactory, VenueF
       return venue.pk === key;
     });
     return venue_filter[0].fields.name;
+  }
+
+  eventDetail.detailBack = (allOrMy) => {
+    if (allOrMy === 'all') {
+      $location.path(`/events`);
+    }
+    else {
+      $location.path(`/myevents`);
+    }
   }
 
 });
