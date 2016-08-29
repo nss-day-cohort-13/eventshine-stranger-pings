@@ -5,24 +5,7 @@ const app = angular
     $interpolateProvider.endSymbol('))');
 
     $routeProvider 
-      // since home is the default 'otherwise' page, we'll need to be able to check if the user is logged in or not. The ? after the 'user' route param allows the param to be null.
-      .when("/home", {
-        templateUrl: "../../static/app/partials/home.html", 
-        controller: "Home", 
-        controllerAs: "home"
-      })
-      // Login and register use the same controller.
-      .when("/login", {
-        templateUrl: "../../static/app/partials/login.html", 
-        controller: "LoginRegister", 
-        controllerAs: "login"
-      })
-      .when("/register", {
-        templateUrl: "../../static/app/partials/user-register.html",
-        controller: "LoginRegister", 
-        controllerAs: "login"
-      })
-      // The 'view all events' saves the user optionally, so we can give the user add'l info about their events if needed.
+     // This app only handles users after they are logged in. See our django templates for the login and register and homepage functionality.
       .when("/events", {
         templateUrl: "../../static/app/partials/events.html", 
         controller: "Events", 
@@ -49,5 +32,5 @@ const app = angular
         controller: "Create", 
         controllerAs: "create"
       })
-      .otherwise("/home/");
+      .otherwise("/events");
   });

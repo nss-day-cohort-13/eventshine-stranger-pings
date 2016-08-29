@@ -17,7 +17,8 @@ app.controller("Events", function($scope, $http, $location) {
  
   allEvents.goToHome = () => {
     console.log("going to home. A logout will happen here.");
-    $location.path("/home");
+    // TODO: do something with django here to redirect to the django logged out stuff.
+    // $location.path("/home");
   };
 
   allEvents.detailBack = (allOrMy) =>{
