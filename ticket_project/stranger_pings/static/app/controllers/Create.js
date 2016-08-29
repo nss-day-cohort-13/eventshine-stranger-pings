@@ -15,6 +15,7 @@ app.controller("Create", function($scope, $http, $location, VenueFactory) {
   create.venue = null;
 
   create.completeCreation = () => {
+    // Sends a 'POST' of the form data to views.py database, through the urls.py. See app.py for the headers config for the 'content-type'.
     $http({
       url: "http//localhost:8000/stranger_pings/events/create/", 
       method: "POST", 
@@ -22,14 +23,13 @@ app.controller("Create", function($scope, $http, $location, VenueFactory) {
       data: {"name": create.name, "description": create.description, "startTime": create.startTime, "endTime": create.endTime, "capacity": create.capacity, "address": create.address, "venue": create.venue}
     })
     .success(() => {
-      console.log("Yay");
+    // TODO: sign the user up for the event after the event is created.
       create.goToMyEvents();
     });
-    // TODO: also sign the user up for the event after the event is created.
   };
 
   create.goToMyEvents = () => {
-    console.log("completing creation and redirecting to event detail.");
+    // Just a path redirect.
     $location.path(`/myevents`);
   };
 
