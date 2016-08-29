@@ -5,7 +5,7 @@
 <h1>Login</h1>
 
 <form action="../login_user/" method="POST" accept-charset="UTF-8">
- {% csrf token %}
+  {% csrf_token %}
   <div>
     <label>Input Username</label>
     <input type="text" name="UserName" placeholder="UserName"/>
