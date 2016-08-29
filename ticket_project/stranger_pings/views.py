@@ -16,10 +16,10 @@ class IndexView(generic.TemplateView):
 
 def create_user(request):
     '''
-    Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
+    Receives request object from register form. Parses object by value (username, password, first_name, last_name), creates new user, saves to database & calls login_user def
 
     Values:
-        request = request object sent from Angular register from
+        request = request object sent from register from
     '''
 
     UserName = request.POST['UserName']
@@ -36,6 +36,12 @@ def create_user(request):
 
 
 def login_user(request):
+    '''
+    Receives request from login form (or create_user def). Parses object by value (username, password), authenticates user & logins in the user
+
+    Values:
+        request = request object sent from login form or create_user def
+    '''
     UserName = request.POST['username']
     Password = request.POST['password']
     user = authenticate(username=UserName, password=Password)
@@ -48,5 +54,11 @@ def login_user(request):
 
 
 def logout_user(request):
+    '''
+    Receives request from site & logs out current user, redirects to landing page
+
+    Values:
+        request = request object sent from site
+    '''
     logout(request)
     # Redirect to landing page
