@@ -1,5 +1,9 @@
-app.controller("Events", function($scope, $http, $location) {
+app.controller("Events", function($scope, $http, $location, AllEventData, eventData) {
   const allEvents = this;
+
+  allEvents.events = eventData.data;
+  AllEventData.setAllEvents(eventData);
+  console.log("eventData: ", allEvents.events);
 
   allEvents.title = "this is where you view all events.";
   allEvents.dettitle = "this is an events detail view.";
@@ -14,7 +18,7 @@ app.controller("Events", function($scope, $http, $location) {
     console.log("going to an event detail.");
     $location.path(`/events/${allEvents.clicked_event}`);
   };
- 
+
   allEvents.goToHome = () => {
     console.log("going to home. A logout will happen here.");
     // TODO: do something with django here to redirect to the django logged out stuff.
