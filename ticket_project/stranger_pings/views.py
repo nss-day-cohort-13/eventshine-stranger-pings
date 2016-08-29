@@ -49,8 +49,8 @@ def login_user(request):
   Values:
       request = request object sent from login form or create_user def
   '''
-  UserName = request.POST['username']
-  Password = request.POST['password']
+  UserName = request.POST['UserName']
+  Password = request.POST['Password']
   user = authenticate(username=UserName, password=Password)
   if user is not None:
       login(request, user)
