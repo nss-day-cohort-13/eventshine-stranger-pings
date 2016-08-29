@@ -44,7 +44,7 @@ const app = angular
           }
         }
       })
-      // This controller can create either an Event or a Venue.
+      // TODO: add a 'create a venue' controller.
       .when("/myevents/create/", {
         templateUrl: "../../static/app/partials/create.html",
         controller: "Create",
