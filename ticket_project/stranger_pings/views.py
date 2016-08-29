@@ -92,7 +92,7 @@ def create_user(request):
                                   first_name=FirstName,
                                   last_name=LastName)
   user.save()
-  login_user(request)
+  return HttpResponseRedirect("../login/")
 
 
 def receive_event_form(request):
