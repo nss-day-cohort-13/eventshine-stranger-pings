@@ -2,11 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views import generic
-<<<<<<< HEAD
 from django.core import serializers
-=======
 from django.contrib.auth.models import User
->>>>>>> master
 
 from .models import Venue, Event, UserEvent
 
