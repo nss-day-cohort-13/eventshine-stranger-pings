@@ -14,12 +14,22 @@ class IndexView(generic.TemplateView):
   template_name = 'stranger_pings/index.html'
 
 def ReturnAllEvents(request):
+  '''
+  Receives request and returns JSON for all current events
+  Arguments:
+    request = request object
+  '''
   events = Event.objects.all()
   data = serializers.serialize('json', events)
 
   return HttpResponse(data, content_type='application/json')
 
 def ReturnUserEvents(request):
+  '''
+  Receives request and returns JSON for events matching current logged in user
+  Arguments:
+    request = request object
+  '''
   user_id = request.user.id
 
   user_events = set(Event.objects.filter(userevent__user=user_id))
@@ -33,7 +43,7 @@ def create_user(request):
   Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
 
   Values:
-      request = request object sent from Angular register from
+      request = request object sent from Angular register form
   '''
 
   UserName = request.POST['UserName']
