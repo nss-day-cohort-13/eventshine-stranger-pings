@@ -11,8 +11,11 @@ const app = angular
         controller: "Events",
         controllerAs: "allEvents",
         resolve: {
-          eventData: function(AllEventData) {
-            return AllEventData.fetchAllEvents();
+          eventData: function(AllEventFactory) {
+            return AllEventFactory.fetchAllEvents();
+          },
+          venueData: function(VenueFactory) {
+            return VenueFactory.fetchAllVenues();
           }
         }
       })

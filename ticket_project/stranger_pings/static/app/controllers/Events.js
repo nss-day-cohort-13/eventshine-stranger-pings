@@ -1,13 +1,23 @@
-app.controller("Events", function($scope, $http, $location, AllEventData, eventData) {
+app.controller("Events", function($scope, $http, $location, AllEventFactory, eventData, VenueFactory, venueData) {
   const allEvents = this;
 
   allEvents.events = eventData.data;
-  AllEventData.setAllEvents(eventData);
-  console.log("eventData: ", allEvents.events);
+  AllEventFactory.setAllEvents(eventData.data);
+
+  allEvents.venues = venueData.data;
+  VenueFactory.setAllVenues(venueData.data);
+  console.log("venueData: ", venueData.data);
 
   allEvents.title = "this is where you view all events.";
   allEvents.dettitle = "this is an events detail view.";
   allEvents.clicked_event = 1;
+
+  allEvents.getVenueName = (key) => {
+    venue_filter = allEvents.venues.filter((venue) => {
+      return venue.pk === key;
+    });
+    return venue_filter[0].fields.name;
+  }
 
   allEvents.goToMyEvents = () => {
     console.log("going to my events");
