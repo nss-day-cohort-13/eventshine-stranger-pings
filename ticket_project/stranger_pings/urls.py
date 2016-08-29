@@ -3,12 +3,12 @@ from django.conf.urls import url, include
 from . import views
 
 event_patterns = [
-    url('^all/$', views.ReturnAllEvents),
-    url(r'^user/$', views.ReturnUserEvents),
+  url('^all/$', views.ReturnAllEvents),
+  url(r'^user/$', views.ReturnUserEvents),
 ]
 
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^events/', include(event_patterns)),
-    url(r'^register/$', views.create_user, name='create_user')
+  url(r'^$', views.IndexView.as_view(), name='index'),
+  url(r'^events/', include(event_patterns)),
+  url(r'^register/$', views.create_user, name='create_user')
 ]

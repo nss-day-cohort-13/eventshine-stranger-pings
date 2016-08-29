@@ -20,29 +20,29 @@ def ReturnAllEvents(request):
   return HttpResponse(data, content_type='application/json')
 
 def ReturnUserEvents(request):
-    user_id = request.user.id
+  user_id = request.user.id
 
-    user_events = set(Event.objects.filter(userevent__user=user_id))
-    data = serializers.serialize('json', user_events)
+  user_events = set(Event.objects.filter(userevent__user=user_id))
+  data = serializers.serialize('json', user_events)
 
-    return HttpResponse(data, content_type='application/json')
+  return HttpResponse(data, content_type='application/json')
 
 
 def create_user(request):
-    '''
-    Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
+  '''
+  Receives request object from Angular register form. Parses object by value (username, password, first_name, last_name), creates new user & saves to database
 
-    Values:
-        request = request object sent from Angular register from
-    '''
+  Values:
+      request = request object sent from Angular register from
+  '''
 
-    UserName = request.POST['UserName']
-    Password = request.POST['Password']
-    FirstName = request.POST['FirstName']
-    LastName = request.POST['LastName']
+  UserName = request.POST['UserName']
+  Password = request.POST['Password']
+  FirstName = request.POST['FirstName']
+  LastName = request.POST['LastName']
 
-    user = User.objects.create_user(username=UserName,
-                                    password=Password,
-                                    first_name=FirstName,
-                                    last_name=LastName)
-    user.save()
+  user = User.objects.create_user(username=UserName,
+                                  password=Password,
+                                  first_name=FirstName,
+                                  last_name=LastName)
+  user.save()
