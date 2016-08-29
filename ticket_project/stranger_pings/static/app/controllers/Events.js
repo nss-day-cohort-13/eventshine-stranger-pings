@@ -29,10 +29,7 @@ app.controller("Events", function($scope, $http, $location, AllEventFactory, eve
   };
 
   allEvents.goToHome = () => {
-    console.log("going to home. A logout will happen here.");
-    window.location.assign('/logout/')
-    // TODO: do something with django here to redirect to the django logged out stuff.
-    // $location.path("/home");
+    window.location.assign('/logout/');
   };
 
   allEvents.detailBack = (allOrMy) =>{
