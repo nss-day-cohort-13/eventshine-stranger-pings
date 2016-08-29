@@ -1,13 +1,38 @@
-app.controller("Create", function($scope, $http, $location) {
+app.controller("Create", function($scope, $http, $location, VenueFactory) {
   const create = this;
 
-  // Temporary Constants.
-  create.title = "create an event or venue page.";
-  create.event_id = 1;
+  // Constants.
+  create.title = "Create An Event.";
+  create.venues = VenueFactory.getAllVenues();
+
+  // Form data.
+  create.name = "";
+  create.description = "";
+  create.startTime = null;
+  create.endTime = null;
+  create.capacity = 0;
+  create.address = "";
+  create.venue = null;
 
   create.completeCreation = () => {
-    console.log("completing creation and redirecting to event detail.");
+    // Sends a 'POST' of the form data to views.py database, through the urls.py. See app.py for the headers config for the 'content-type'.
+    $http({
+      url: "http//localhost:8000/stranger_pings/events/create/", 
+      method: "POST", 
+      headers: {"Content-Type": "application/x-www-form-urlencoded"}, 
+      data: {"name": create.name, "description": create.description, "startTime": create.startTime, "endTime": create.endTime, "capacity": create.capacity, "address": create.address, "venue": create.venue}
+    })
+    .success(() => {
+    // TODO: sign the user up for the event after the event is created.
+      create.goToMyEvents();
+    });
+  };
+
+  create.goToMyEvents = () => {
+    // Just a path redirect.
     $location.path(`/myevents`);
   };
+
+
 
 });

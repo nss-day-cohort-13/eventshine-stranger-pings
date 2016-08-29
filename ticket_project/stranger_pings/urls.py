@@ -4,8 +4,9 @@ from . import views
 from django.views import generic
 
 event_patterns = [
-  url('^all/$', views.ReturnAllEvents),
+  url(r'^all/$', views.ReturnAllEvents),
   url(r'^user/$', views.ReturnUserEvents),
+  url(r'^create/$', views.receive_event_form),
 ]
 
 venue_patterns = [
