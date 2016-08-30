@@ -111,7 +111,7 @@ def receive_event_form(request):
   address = obj["address"]
   venue = obj["venue"]
 
-  event = Event.objects.create_event(name=name, 
+  event = Event.objects.create(name=name, 
                                     description=description, 
                                     begin_date_time=begin_date_time, 
                                     end_date_time=end_date_time,
@@ -128,10 +128,13 @@ def receive_venue_form(request):
   Values: 
     request = request object sent from event form
   '''
+  if request.method == "POST":
+    print("Da Body ~~~~~~~~~~~~~~~~~~~~~~~~~", request.body)
+    obj = json.loads(request.body.decode())
+    name = obj["name"]
+    print("name >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", name)
+    venue = Venue.objects.create(name=name)
+    venue.save()
+    return HttpResponseRedirect("/")
 
-  obj = json.loads(request.body.decode())
-  name = obj["name"]
 
-  venue = Venue.objects.create_venue(name=name)
-  venue.save()
-  return True
