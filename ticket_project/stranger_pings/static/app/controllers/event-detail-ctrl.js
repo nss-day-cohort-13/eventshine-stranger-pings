@@ -25,4 +25,8 @@ app.controller('EventDetailCtrl', function($routeParams, $location, AllEventFact
     }
   }
 
+  eventDetail.logOut = () => {
+    window.location.assign('/logout/');
+  };
+
 });
