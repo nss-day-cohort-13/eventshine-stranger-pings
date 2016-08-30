@@ -122,4 +122,10 @@ def receive_event_form(request):
   return True
 
 def receive_venue_form(request):
+
+  obj = json.loads(request.body.decode())
+  name = obj["name"]
+
+  venue = Venue.objects.create_venue(name=name)
+  venue.save()
   return True
