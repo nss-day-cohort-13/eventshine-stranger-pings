@@ -122,6 +122,12 @@ def receive_event_form(request):
   return True
 
 def receive_venue_form(request):
+  '''
+  Receives request object from Angular 'create venue' form. Parses object by value (name only), and saves to database. Returns true so the Angular controller can get on with its next thing. 
+
+  Values: 
+    request = request object sent from event form
+  '''
 
   obj = json.loads(request.body.decode())
   name = obj["name"]
