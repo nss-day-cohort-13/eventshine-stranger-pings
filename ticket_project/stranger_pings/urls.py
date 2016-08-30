@@ -7,6 +7,7 @@ event_patterns = [
   url(r'^all/$', views.ReturnAllEvents),
   url(r'^user/$', views.ReturnUserEvents),
   url(r'^create/$', views.receive_event_form),
+  url(r'^venue/$', views.receive_venue_form),
 ]
 
 venue_patterns = [

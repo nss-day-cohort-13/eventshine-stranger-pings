@@ -120,3 +120,6 @@ def receive_event_form(request):
                                     venue=venue)
   event.save()
   return True
+
+def receive_venue_form(request):
+  return True
