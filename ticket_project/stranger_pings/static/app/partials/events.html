@@ -1,14 +1,13 @@
 <h1>## allEvents.title ##</h1>
 
 <div>
-  <div ng-repeat="event in allEvents.events">
-    <p><a href="#/events/##event.pk##">## event.fields.name ##</a></p>
+  <div ng-repeat="event in events">
+    <p><strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong></p>
     <p>## allEvents.getVenueName(event.fields.venue) ##</p>
     <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
   </div>
 </div>
 
-<button ng-click="allEvents.goToEventDetail()">Go To Event Detail Page</button>
-<button ng-click="allEvents.goToMyEvents()">Go To My Events</button>
-<button ng-click="allEvents.goToHome()">Log Out and Go To Home</button>
+<a href="#/myevents" class="btn btn-default">Go To My Events</a>
+<a href="allEvents.goToHome()" class="btn btn-default">Log Out and Go To Home</a>
 

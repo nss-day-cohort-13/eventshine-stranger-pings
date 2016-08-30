@@ -3,16 +3,16 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
   const myCtrl = this;
 
 
-  MyEventsFactory.fetchMyEvents()
-    .then((res) => {
-      $scope.myEvents = res.data;
-      MyEventsFactory.setMyEvents(res.data);
-    });
-
   VenueFactory.fetchAllVenues()
     .then((res) => {
       $scope.venues = res.data;
       VenueFactory.setAllVenues(res.data);
+    });
+
+  MyEventsFactory.fetchMyEvents()
+    .then((res) => {
+      $scope.myEvents = res.data;
+      MyEventsFactory.setMyEvents(res.data);
     });
 
 

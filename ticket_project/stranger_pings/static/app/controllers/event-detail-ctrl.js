@@ -3,16 +3,14 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   const eventDetail = this;
 
 
-  EventDetailFactory.fetchSingleEvent($routeParams.event)
-    .then((res) => {
-      $scope.thisEvent = res.data;
-      console.log("res: ", res.data);
-    })
-
   VenueFactory.fetchAllVenues()
     .then((res) => {
       $scope.venues = res.data;
-      console.log("res: ", res.data);
+    })
+
+  EventDetailFactory.fetchSingleEvent($routeParams.event)
+    .then((res) => {
+      $scope.thisEvent = res.data;
     })
 
 

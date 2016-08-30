@@ -1,4 +1,4 @@
-app.factory('AllEventFactory', function($http) {
+app.factory('AllEventsFactory', function($http) {
 
   let allEvents;
 
