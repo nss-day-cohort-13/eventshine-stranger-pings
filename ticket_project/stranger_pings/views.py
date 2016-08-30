@@ -35,6 +35,20 @@ def ReturnUserEvents(request):
 
   return HttpResponse(data, content_type='application/json')
 
+def ReturnSingleUserEvent(request, event_id):
+  '''
+  Receives request and returns JSON for events matching current logged in user
+  Arguments:
+    request = request object
+    event_id = the event id of the user event being searched for
+  '''
+  user_id = request.user.id
+
+  user_events = set(Event.objects.filter(userevent__user=user_id, userevent__event=event_id))
+  data = serializers.serialize('json', user_events)
+
+  return HttpResponse(data, content_type='application/json')
+
 def ReturnSingleEvent(request, event_id):
   '''
   Receives request and returns JSON for the event matching the id passed in
@@ -149,3 +163,26 @@ def receive_venue_form(request):
     venue = Venue.objects.create(name=name)
     venue.save()
     return HttpResponseRedirect("/")
+
+def RegisterEvent(request, event_id):
+  '''
+  Receives request, creates a user event with current user and passed in event_id,
+  and returns a JSON object formatted: {'success': true/false}
+  Arguments:
+    request = request object
+    event_id = the id for the event being registered
+  '''
+  user = request.user
+  event = Event.objects.get(pk=int(event_id))
+  success = {'success': False}
+
+  try:
+    u = UserEvent.objects.create(user=user, event=event, creator=False)
+    u.save()
+    success['success'] = True
+  except Exception as ex:
+    print(ex)
+    pass
+
+  data = json.dumps(success)
+  return HttpResponse(data, content_type='application/json')
