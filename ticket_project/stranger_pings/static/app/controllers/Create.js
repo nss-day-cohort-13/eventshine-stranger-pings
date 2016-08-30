@@ -35,6 +35,8 @@ app.controller("Create", function($scope, $http, $location, VenueFactory) {
     $location.path(`/myevents`);
   };
 
-
+  create.logOut = () => {
+    window.location.assign('/logout/');
+  };
 
 });
