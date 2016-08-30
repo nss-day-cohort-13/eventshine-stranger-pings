@@ -9,10 +9,11 @@
     <p>Tickets left: ## tix_left ##</p>
 </div>
 
-<div>
-    <button ng-click="eventDetail.register()" class="btn btn-default" ng-show="!registered">Register for this event</button>
-    <button ng-click="eventDetail.unregister()" class="btn btn-default" ng-show="registered">Unregister for this event</button>
-</div>
+<form>
+  <strong>Register</strong>
+  <br>
+  <switch ng-change="eventDetail.toggleRegister()" id="enabled" name="enabled" ng-model="registered" class="green"></switch>
+</form>
 
 <button ng-click="eventDetail.detailBack('all')">Go Back to All Events</button>
 <button ng-click="eventDetail.detailBack('my')">Go Back to My Events</button>

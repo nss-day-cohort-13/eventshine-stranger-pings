@@ -2,7 +2,6 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
 
   const eventDetail = this;
 
-
   VenueFactory.fetchAllVenues()
     .then((res) => {
       $scope.venues = res.data;
@@ -50,7 +49,6 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   eventDetail.unregister = () => {
     EventDetailFactory.eventUnregister($routeParams.event)
       .then((res) => {
-        console.log("unregister res: ", res);
         if (res.data.success) {
           $scope.registered = false;
           $scope.tix_left += 1
@@ -58,6 +56,20 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
           return;
         }
       })
+  }
+
+  eventDetail.toggleRegister = () => {
+    if ($scope.registered === true) {
+      // This is set back to its original value because the switch
+      // automatically toggles true/false, but the app should wait
+      // for the success from the database to update this value.
+      $scope.registered = false
+      eventDetail.register();
+    } else {
+      // See note above
+      $scope.registered = true
+      eventDetail.unregister();
+    }
   }
 
   eventDetail.detailBack = (allOrMy) => {
