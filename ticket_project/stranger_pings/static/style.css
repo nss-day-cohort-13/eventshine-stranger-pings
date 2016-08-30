@@ -1,6 +1,6 @@
 body {
   background: black;
-  color: red;
+  box-sizing: border-box;
 }
 
 .jumbotron {
@@ -8,12 +8,17 @@ body {
   position: relative;
 }
 
+.centeredform {
+  text-align: center;
+}
+
+/*Background stuff.*/
+
 .homebackground {
   background-image: url('stranger-pings.png');
   background-position: center center;
   background-size: cover;
 }
-
 
 .loginbackground {
   background-image: url('login-page.jpg');
@@ -27,12 +32,30 @@ body {
   background-size: cover;
 }
 
-.absolutebuttons {
-  bottom: 10%;
-  position: absolute;
-  right: 10%;
+.alleventsbackground {
+  background-image: url('all-events.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
 }
-.loginform {
+
+/*Event Cards.*/
+
+.eventcard {
+  background-color: white;
+  border: 2px solid transparent;
+  margin: 15px;
+  padding: 20px;
   text-align: center;
-  /*margin-right: 30%;*/
+}
+
+.eventcard:hover {
+  border: 2px solid red;
+}
+
+.eventcard a h4 {
+  border-bottom: 1px solid red;
+}
+.eventcard a p,h4{
+  color: black;
 }

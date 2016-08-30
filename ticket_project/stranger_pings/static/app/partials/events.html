@@ -1,14 +1,24 @@
-<h1>## allEvents.title ##</h1>
 
-<div>
-  <div ng-repeat="event in allEvents.events">
-    <p><a href="#/events/##event.pk##">## event.fields.name ##</a></p>
-    <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
-  </div>
+<div class="jumbotron alleventsbackground">
 </div>
 
-<button ng-click="allEvents.goToEventDetail()">Go To Event Detail Page</button>
-<button ng-click="allEvents.goToMyEvents()">Go To My Events</button>
-<button ng-click="allEvents.goToHome()">Log Out and Go To Home</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-xs-3">
+      <div class="eventcard" ng-repeat="event in allEvents.events">
+        <a href="#/events/##event.pk##">
+          <h4>EVENT</h4>
+          <p>## event.fields.name ##</p>
+          <h4>VENUE</h4>
+          <p>## allEvents.getVenueName(event.fields.venue) ##</p>
+          <h4>DATE</h4>
+          <p>## event.fields.begin_date_time|dateFormat ##</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<button class="btn btn-lg btn-danger" ng-click="allEvents.goToEventDetail()">Go To Event Detail Page</button>
+<button class="btn btn-lg btn-danger" ng-click="allEvents.goToMyEvents()">Go To My Events</button>
+<button class="btn btn-lg btn-danger" ng-click="allEvents.goToHome()">Log Out and Go To Home</button>
 
