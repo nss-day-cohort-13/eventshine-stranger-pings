@@ -1,4 +1,5 @@
 app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFactory) {
+
   const myCtrl = this;
 
 

@@ -34,18 +34,7 @@ const app = angular
       .when("/myevents", {
         templateUrl: "../../static/app/partials/myevents.html",
         controller: "MyEvents",
-        controllerAs: "myCtrl",
-        resolve: {
-          eventData: function(AllEventFactory) {
-            return AllEventFactory.fetchAllEvents();
-          },
-          venueData: function(VenueFactory) {
-            return VenueFactory.fetchAllVenues();
-          },
-          myEventData: function(MyEventsFactory) {
-            return MyEventsFactory.fetchMyEvents()
-          }
-        }
+        controllerAs: "myCtrl"
       })
       // TODO: add a 'create a venue' controller.
       .when("/myevents/create/", {

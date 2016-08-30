@@ -35,6 +35,19 @@ def ReturnUserEvents(request):
 
   return HttpResponse(data, content_type='application/json')
 
+def ReturnSingleEvent(request, event_id):
+  '''
+  Receives request and returns JSON for the event matching the id passed in
+  Arguments:
+    request = request object
+    event_id = the id for the event being requested
+  '''
+  this_event = Event.objects.filter(pk=event_id)
+  data = serializers.serialize('json', this_event)
+
+  return HttpResponse(data, content_type='application/json')
+
+
 def ReturnAllVenues(request):
   '''
   Receives request and returns JSON for all venues
@@ -97,9 +110,9 @@ def create_user(request):
 
 def receive_event_form(request):
   '''
-  Receives request object from Angular 'create event' form. Parses object by value (name, description, begin time, end time, ticket limit, address, and venue), and saves to database. Returns true so the Angular controller can get on with its next thing. 
+  Receives request object from Angular 'create event' form. Parses object by value (name, description, begin time, end time, ticket limit, address, and venue), and saves to database. Returns true so the Angular controller can get on with its next thing.
 
-  Values: 
+  Values:
     request = request object sent from event form
   '''
   obj = json.loads(request.body.decode())
@@ -111,9 +124,9 @@ def receive_event_form(request):
   address = obj["address"]
   venue = obj["venue"]
 
-  event = Event.objects.create_event(name=name, 
-                                    description=description, 
-                                    begin_date_time=begin_date_time, 
+  event = Event.objects.create_event(name=name,
+                                    description=description,
+                                    begin_date_time=begin_date_time,
                                     end_date_time=end_date_time,
                                     tix_limit=tix_limit,
                                     address=address,

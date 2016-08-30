@@ -1,21 +1,21 @@
 app.factory('MyEventsFactory', function($http) {
 
-    myEvents = {};
+  let myEvents = {};
 
-    return {
+  return {
 
-        fetchMyEvents: () => {
-            return $http.get('http://localhost:8000/events/user');
-        },
+    fetchMyEvents: () => {
+      return $http.get('http://localhost:8000/events/user');
+    },
 
-        getMyEvents: () => {
-            return myEvents;
-        },
+    getMyEvents: () => {
+      return myEvents;
+    },
 
-        setMyEvents: (data) => {
-            myEvents = data;
-        }
-
+    setMyEvents: (data) => {
+      myEvents = data;
     }
+
+  }
 
 });
