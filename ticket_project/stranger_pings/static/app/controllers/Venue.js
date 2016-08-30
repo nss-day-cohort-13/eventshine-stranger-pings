@@ -1,7 +1,7 @@
 app.controller("Venue", function($scope, $http, $location) {
   const venue = this;
 
-  venue.title="Create An Event";
+  venue.title="Create A Venue";
   // Form fills out this variable.
   venue.name = "";
 

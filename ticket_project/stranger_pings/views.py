@@ -102,24 +102,26 @@ def receive_event_form(request):
   Values: 
     request = request object sent from event form
   '''
-  obj = json.loads(request.body.decode())
-  name = obj["name"]
-  description = obj["description"]
-  begin_date_time = obj["startTime"]
-  end_date_time = obj["endTime"]
-  tix_limit = obj["capacity"]
-  address = obj["address"]
-  venue = obj["venue"]
+  if request.method == "POST":
+    obj = json.loads(request.body.decode())
+    name = obj["name"]
+    description = obj["description"]
+    begin_date_time = obj["startTime"]
+    end_date_time = obj["endTime"]
+    tix_limit = obj["capacity"]
+    address = obj["address"]
+    venue = obj["venue"]
 
-  event = Event.objects.create(name=name, 
-                                    description=description, 
-                                    begin_date_time=begin_date_time, 
-                                    end_date_time=end_date_time,
-                                    tix_limit=tix_limit,
-                                    address=address,
-                                    venue=venue)
-  event.save()
-  return True
+    event = Event.objects.create(name=name, 
+                                      description=description, 
+                                      begin_date_time=begin_date_time, 
+                                      end_date_time=end_date_time,
+                                      tix_limit=tix_limit,
+                                      address=address,
+                                      venue=venue)
+    event.save()
+    return HttpResponseRedirect("/")
+    
 
 def receive_venue_form(request):
   '''
@@ -129,10 +131,8 @@ def receive_venue_form(request):
     request = request object sent from event form
   '''
   if request.method == "POST":
-    print("Da Body ~~~~~~~~~~~~~~~~~~~~~~~~~", request.body)
     obj = json.loads(request.body.decode())
     name = obj["name"]
-    print("name >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", name)
     venue = Venue.objects.create(name=name)
     venue.save()
     return HttpResponseRedirect("/")
