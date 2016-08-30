@@ -39,6 +39,12 @@ body {
   min-height: 32vh;
 }
 
+.myeventsbackground {
+  background-image: url('my-events.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
 /*Event Cards.*/
 
 .eventcard {

@@ -1,13 +1,24 @@
-<h1>## myCtrl.title ##</h1>
 
-<div ng-repeat="event in myEvents">
-    <strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong>
-    <p>## event.fields.begin_date_time|dateFormat ##</p>
-    <p>## myCtrl.getVenueName(event.fields.venue) ##</p>
+<div class="jumbotron myeventsbackground">
 </div>
 
-<a href="#/events" class="btn btn-default">Go To All Events</a>
-<a href="#/myevents/create" class="btn btn-default">Create New Event</a>
-<a href="#/myevents/create/" class="btn btn-default">Create New Event</a>
-<a href="#/myevents/venue/" class="btn btn-default">Create New Venue</a>
-<a href="myCtrl.logOut()" class="btn btn-default">Log Out</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-xs-3">
+      <div class="eventcard" ng-repeat="event in myEvents">
+        <a href="#/events/##event.pk##">
+          <h4>EVENT</h4>
+          <p>## event.fields.name ##</p>
+          <h4>VENUE</h4>
+          <p>## allEvents.getVenueName(event.fields.venue) ##</p>
+          <h4>DATE</h4>
+          <p>## event.fields.begin_date_time|dateFormat ##</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<a href="#/myevents/create/" class="btn btn-danger btn-lg">Create New Event</a>
+<a href="#/myevents/venue/" class="btn btn-danger btn-lg">Create New Venue</a>
+<a href="#/events" class="btn btn-danger btn-lg">Go To All Events</a>
+<a href="myCtrl.logOut()" class="btn btn-danger btn-lg">Log Out</a>
