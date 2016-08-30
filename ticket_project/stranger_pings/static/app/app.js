@@ -34,13 +34,16 @@ const app = angular
       .when("/myevents", {
         templateUrl: "../../static/app/partials/myevents.html",
         controller: "MyEvents",
-        controllerAs: "myEvents",
+        controllerAs: "myCtrl",
         resolve: {
           eventData: function(AllEventFactory) {
             return AllEventFactory.fetchAllEvents();
           },
           venueData: function(VenueFactory) {
             return VenueFactory.fetchAllVenues();
+          },
+          myEventData: function(MyEventsFactory) {
+            return MyEventsFactory.fetchMyEvents()
           }
         }
       })

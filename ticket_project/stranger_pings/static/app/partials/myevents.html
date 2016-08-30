@@ -1,6 +1,16 @@
-<h1>((myEvents.title))</h1>
-<button ng-click="myEvents.goToAllEvents()">Go To All Events</button>
-<button ng-click="myEvents.goToEventDetail()">Go To Event Detail</button>
-<button ng-click="myEvents.createEvent()">Create New Event</button>
-<button ng-click="myEvents.createVenue()">Create New Venue</button>
-<button ng-click="myEvents.logOut()">Log Out and Go To Home</button>
+<h1>## myCtrl.title ##</h1>
+
+<div ng-repeat="event in myEvents">
+    <strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong>
+    <p>## event.fields.begin_date_time|dateFormat ##</p>
+    <p>## myCtrl.getVenueName(event.fields.venue) ##</p>
+</div>
+
+<a href="#/events" class="btn btn-default">Go To All Events</a>
+<a href="#/myevents/create" class="btn btn-default">Create New Event</a>
+<a href="myCtrl.logOut()" class="btn btn-default">Log Out</a>
+
+<!-- <button ng-click="myCtrl.goToAllEvents()">Go To All Events</button>
+<button ng-click="myCtrl.createEvent()">Create New Event</button>
+<button ng-click="myCtrl.createVenue()">Create New Venue</button>
+<button ng-click="myCtrl.logOut()">Log Out and Go To Home</button> -->
