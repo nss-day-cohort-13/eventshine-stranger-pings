@@ -1,6 +1,6 @@
 # Event Ticketing System
 
-![Stranger Pings](stranger-pings.png)
+![Stranger Pings](ticket_project/stranger_pings/static/stranger-pings.png)
 
 Your mission is to design, model, and build a Django application that allows users to purchase a ticket to an event, and allows a user to create an event.
 
