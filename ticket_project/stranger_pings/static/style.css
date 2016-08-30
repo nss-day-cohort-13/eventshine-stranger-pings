@@ -65,3 +65,8 @@ body {
 .eventcard a p,h4{
   color: black;
 }
+
+.alert {
+  color: red;
+  font-size: 3em;
+}

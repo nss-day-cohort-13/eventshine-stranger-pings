@@ -15,24 +15,23 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
       MyEventsFactory.setMyEvents(res.data);
     });
 
-  myEvents.createEvent = () => {
-    console.log("going to create page, passing 'event'.");
+  
+  myCtrl.createEvent = () => {
     $location.path(`/myevents/create/`);
   };
 
-  myEvents.createVenue = () => {
-    console.log("going to create page, passing 'venue'.");
+  myCtrl.createVenue = () => {
     $location.path(`myevents/venue/`);
   };
 
   myCtrl.title = "My Events";
 
   myCtrl.getVenueName = (key) => {
-    venue_filter = $scope.venues.filter((venue) => {
+    const venue_filter = $scope.venues.filter((venue) => {
       return venue.pk === key;
     });
     return venue_filter[0].fields.name;
-  }
+  };
 
   myCtrl.logOut = () => {
     window.location.assign('/logout/');
