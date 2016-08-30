@@ -1,11 +1,12 @@
 <h1>## eventDetail.thisEvent.fields.name ##</h1>
 
-<div>
-    <p>## eventDetail.getVenueName(eventDetail.thisEvent.fields.venue) ##</p>
-    <p>## eventDetail.thisEvent.fields.address ##</p>
-    <p>Begins: ## eventDetail.thisEvent.fields.begin_date_time|dateFormat ##</p>
-    <p>Ends: ## eventDetail.thisEvent.fields.end_date_time|dateFormat ##</p>
-    <p>Capacity: ## eventDetail.thisEvent.fields.tix_limit ##</p>
+<div ng-repeat="event in thisEvent">
+    <h2>## event.fields.name ##</h2>
+    <p>## eventDetail.getVenueName(event.fields.venue) ##</p>
+    <p>## event.fields.address ##</p>
+    <p>Begins: ## event.fields.begin_date_time|dateFormat ##</p>
+    <p>Ends: ## event.fields.end_date_time|dateFormat ##</p>
+    <p>Capacity: ## event.fields.tix_limit ##</p>
 </div>
 
 <div>

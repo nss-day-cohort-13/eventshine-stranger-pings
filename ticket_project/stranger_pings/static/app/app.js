@@ -11,15 +11,7 @@ const app = angular
       .when("/events", {
         templateUrl: "../../static/app/partials/events.html",
         controller: "Events",
-        controllerAs: "allEvents",
-        resolve: {
-          eventData: function(AllEventFactory) {
-            return AllEventFactory.fetchAllEvents();
-          },
-          venueData: function(VenueFactory) {
-            return VenueFactory.fetchAllVenues();
-          }
-        }
+        controllerAs: "allEvents"
       })
       .when("/events/:event", {
         templateUrl: "../../static/app/partials/eventdetail.html",
@@ -34,15 +26,7 @@ const app = angular
       .when("/myevents", {
         templateUrl: "../../static/app/partials/myevents.html",
         controller: "MyEvents",
-        controllerAs: "myEvents",
-        resolve: {
-          eventData: function(AllEventFactory) {
-            return AllEventFactory.fetchAllEvents();
-          },
-          venueData: function(VenueFactory) {
-            return VenueFactory.fetchAllVenues();
-          }
-        }
+        controllerAs: "myCtrl"
       })
       .when("/myevents/create/", {
         templateUrl: "../../static/app/partials/create.html",

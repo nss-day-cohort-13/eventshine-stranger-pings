@@ -5,7 +5,7 @@ app.factory('VenueFactory', function($http) {
   return {
 
     fetchAllVenues: () => {
-      return $http.get('http://localhost:8000/venues/all/')
+      return $http.get('http://localhost:8000/venues/all/');
     },
 
     setAllVenues: (data) => {
