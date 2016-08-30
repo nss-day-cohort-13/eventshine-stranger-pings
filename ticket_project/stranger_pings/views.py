@@ -199,3 +199,25 @@ def RegisterEvent(request, event_id):
 
   data = json.dumps(success)
   return HttpResponse(data, content_type='application/json')
+
+def UnregisterEvent(request, event_id):
+  '''
+  Receives request, deletes a user event with current user and passed in event_id,
+  and returns a JSON object formatted: {'success': true/false}
+  Arguments:
+    request = request object
+    event_id = the id for the event being unregistered
+  '''
+  user = request.user.id
+  user_event = UserEvent.objects.get(user=user, event=event_id)
+  success = {'success': False}
+
+  try:
+    user_event.delete()
+    success['success'] = True
+  except Exception as ex:
+    print(ex)
+    pass
+
+  data = json.dumps(success)
+  return HttpResponse(data, content_type='application/json')

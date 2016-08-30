@@ -16,6 +16,10 @@ app.factory('EventDetailFactory', function($http) {
 
     eventRegister: (event_key) => {
       return $http.get(`http://localhost:8000/events/register/${event_key}`)
+    },
+
+    eventUnregister: (event_key) => {
+      return $http.get(`http://localhost:8000/events/unregister/${event_key}`)
     }
 
   }

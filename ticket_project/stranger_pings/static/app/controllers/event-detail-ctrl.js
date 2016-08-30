@@ -13,15 +13,13 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
       $scope.thisEvent = res.data;
       EventDetailFactory.fetchAllRegistrations($routeParams.event)
         .then((res) => {
-          console.log("registered res: ", res);
           num_registered = res.data.length;
-          $scope.tix_left = parseInt($scope.thisEvent[0].fields.tix_limit) - num_registered;
+          $scope.tix_left = $scope.thisEvent[0].fields.tix_limit - num_registered;
         })
     })
 
   EventDetailFactory.fetchUserEvent($routeParams.event)
     .then((res) => {
-      console.log("res: ", res);
       if (res.data.length === 1) {
         $scope.registered = true;
       } else {
@@ -40,11 +38,24 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   eventDetail.register = () => {
     EventDetailFactory.eventRegister($routeParams.event)
       .then((res) => {
-        console.log("register res: ", res);
         if (res.data.success) {
           $scope.registered = true;
+          $scope.tix_left -= 1
         } else {
-          return
+          return;
+        }
+      })
+  }
+
+  eventDetail.unregister = () => {
+    EventDetailFactory.eventUnregister($routeParams.event)
+      .then((res) => {
+        console.log("unregister res: ", res);
+        if (res.data.success) {
+          $scope.registered = false;
+          $scope.tix_left += 1
+        } else {
+          return;
         }
       })
   }
