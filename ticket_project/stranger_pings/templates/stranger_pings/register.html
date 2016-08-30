@@ -1,28 +1,27 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
-<h1>Register Here</h1>
-
-<form action="../registered_user/" method="POST" accept-charset="UTF-8">
+<div class="jumbotron registerbackground">
+</div>
+<!-- Register form. -->
+<form class="form-inline loginform" action="../registered_user/" method="POST" accept-charset="UTF-8">
   {% csrf_token %}
-  <div>
-    <label>Input Username</label>
-    <input type="text" name="UserName" placeholder="UserName"/>
+  <div class="form-group">
+    <input class="input-lg" type="text" name="UserName" placeholder="UserName"/>
   </div>
-  <div>
-    <label>Input Password</label>
-    <input type="password" name="Password" placeholder="Password" />
+  <div class="form-group">
+    <input class="input-lg" type="password" name="Password" placeholder="Password" />
   </div>
-  <div>
-    <label>Input First Name</label>
-    <input type="text" name="FirstName" placeholder="First Name" />
+  <div class="form-group">
+    <input class="input-lg" type="text" name="FirstName" placeholder="First Name" />
   </div>
-  <div>
-    <label>Input Last Name</label>
-    <input type="text" name="LastName" placeholder="Last Name" />
+  <div class="form-group">
+    <input class="input-lg" type="text" name="LastName" placeholder="Last Name" />
   </div>
-  <div>
-    <button class="btn btn-default" type="submit">Register</button>
+  <div class="form-group">
+    <button class="btn btn-danger btn-lg" type="submit">Submit</button>
+    <a href="../login" class="btn btn-danger btn-lg" role="button">Log In</a>
   </div>
 </form>
