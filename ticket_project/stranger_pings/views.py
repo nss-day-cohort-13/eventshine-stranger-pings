@@ -49,6 +49,19 @@ def ReturnSingleUserEvent(request, event_id):
 
   return HttpResponse(data, content_type='application/json')
 
+def ReturnAllRegistered(request, event_id):
+  '''
+  Receives request and returns JSON for all user events matching the
+  event id passed in
+  Arguments:
+    request = request object
+    event_id = the event id of the user events being searched for
+  '''
+  user_events = set(UserEvent.objects.filter(event=event_id))
+  data = serializers.serialize('json', user_events)
+
+  return HttpResponse(data, content_type='application/json')
+
 def ReturnSingleEvent(request, event_id):
   '''
   Receives request and returns JSON for the event matching the id passed in

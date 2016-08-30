@@ -11,6 +11,12 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   EventDetailFactory.fetchSingleEvent($routeParams.event)
     .then((res) => {
       $scope.thisEvent = res.data;
+      EventDetailFactory.fetchAllRegistrations($routeParams.event)
+        .then((res) => {
+          console.log("registered res: ", res);
+          num_registered = res.data.length;
+          $scope.tix_left = parseInt($scope.thisEvent[0].fields.tix_limit) - num_registered;
+        })
     })
 
   EventDetailFactory.fetchUserEvent($routeParams.event)

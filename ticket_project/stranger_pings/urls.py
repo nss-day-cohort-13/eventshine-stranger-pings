@@ -7,6 +7,7 @@ event_patterns = [
   url(r'^all/$', views.ReturnAllEvents),
   url(r'^user/$', views.ReturnUserEvents),
   url(r'^user/(?P<event_id>[0-9]*)$', views.ReturnSingleUserEvent),
+  url(r'^registrations/(?P<event_id>[0-9]*)$', views.ReturnAllRegistered),
   url(r'^create/$', views.receive_event_form),
   url(r'^(?P<event_id>[0-9]*)/$', views.ReturnSingleEvent),
   url(r'^register/(?P<event_id>[0-9]*)/$', views.RegisterEvent),
