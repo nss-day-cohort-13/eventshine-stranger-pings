@@ -1,4 +1,4 @@
-app.controller("Venue", function($scope, $http, $location, VenueFactory) {
+app.controller("Venue", function($scope, $http, $location) {
   const venue = this;
 
   venue.title="Create An Event";
