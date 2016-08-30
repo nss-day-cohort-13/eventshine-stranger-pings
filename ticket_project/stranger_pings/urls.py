@@ -25,7 +25,7 @@ urlpatterns = [
   url(r'^logout/$', views.logout_user, name='logout_user'),
 
   url(r'^events/', include(event_patterns)),
-  # url(r'^venues/', include(venue_patterns)),
+  url(r'^venues/', include(venue_patterns)),
 
   # Register URLS
   url(r'^register/', generic.TemplateView.as_view(template_name="stranger_pings/register.html")),

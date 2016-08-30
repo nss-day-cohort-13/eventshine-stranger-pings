@@ -118,7 +118,7 @@ def receive_event_form(request):
                                       end_date_time=end_date_time,
                                       tix_limit=tix_limit,
                                       address=address,
-                                      venue=venue)
+                                      venue_id=venue["pk"])
     event.save()
     return HttpResponseRedirect("/")
     

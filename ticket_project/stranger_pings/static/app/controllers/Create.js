@@ -1,9 +1,11 @@
 app.controller("Create", function($scope, $http, $location, VenueFactory) {
   const create = this;
 
-  // Constants.
-  create.title = "Create An Event.";
-  create.venues = VenueFactory.getAllVenues();
+  VenueFactory.fetchAllVenues()
+    .then((res) => {
+      console.log("venue data", res.data);
+      create.venues = res.data;
+    });
 
   // Form data.
   create.name = "";
