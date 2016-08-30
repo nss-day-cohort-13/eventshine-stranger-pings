@@ -1,9 +1,12 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
-<h1>Welcome to Stranger Pings.</h1>
+<div class="jumbotron">
+  <div class="absolutebuttons">
+    <a href="../login" class="btn btn-danger btn-lg" role="button">Login</a>
+    <a href="../register" class="btn btn-danger btn-lg" role="button">Register</a>
+  </div>
+</div>
 
-<a href="../login" class="btn btn-default">Login</a>
-
-<a href="../register" class="btn btn-default">Register</a>
