@@ -17,12 +17,12 @@ app.controller("MyEvents", function($scope, $http, $location) {
 
   myEvents.createEvent = () => {
     console.log("going to create page, passing 'event'.");
-    $location.path(`/myevents/create/${'event'}`);
+    $location.path(`/myevents/create/`);
   };
 
   myEvents.createVenue = () => {
     console.log("going to create page, passing 'venue'.");
-    $location.path(`myevents/create/${'venue'}`);
+    $location.path(`myevents/venue/`);
   };
 
   myEvents.logOut = () => {

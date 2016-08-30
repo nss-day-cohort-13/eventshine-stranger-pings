@@ -102,21 +102,39 @@ def receive_event_form(request):
   Values: 
     request = request object sent from event form
   '''
-  obj = json.loads(request.body.decode())
-  name = obj["name"]
-  description = obj["description"]
-  begin_date_time = obj["startTime"]
-  end_date_time = obj["endTime"]
-  tix_limit = obj["capacity"]
-  address = obj["address"]
-  venue = obj["venue"]
+  if request.method == "POST":
+    obj = json.loads(request.body.decode())
+    name = obj["name"]
+    description = obj["description"]
+    begin_date_time = obj["startTime"]
+    end_date_time = obj["endTime"]
+    tix_limit = obj["capacity"]
+    address = obj["address"]
+    venue = obj["venue"]
 
-  event = Event.objects.create_event(name=name, 
-                                    description=description, 
-                                    begin_date_time=begin_date_time, 
-                                    end_date_time=end_date_time,
-                                    tix_limit=tix_limit,
-                                    address=address,
-                                    venue=venue)
-  event.save()
-  return True
+    event = Event.objects.create(name=name, 
+                                      description=description, 
+                                      begin_date_time=begin_date_time, 
+                                      end_date_time=end_date_time,
+                                      tix_limit=tix_limit,
+                                      address=address,
+                                      venue_id=venue["pk"])
+    event.save()
+    return HttpResponseRedirect("/")
+    
+
+def receive_venue_form(request):
+  '''
+  Receives request object from Angular 'create venue' form. Parses object by value (name only), and saves to database. Returns true so the Angular controller can get on with its next thing. 
+
+  Values: 
+    request = request object sent from event form
+  '''
+  if request.method == "POST":
+    obj = json.loads(request.body.decode())
+    name = obj["name"]
+    venue = Venue.objects.create(name=name)
+    venue.save()
+    return HttpResponseRedirect("/")
+
+
