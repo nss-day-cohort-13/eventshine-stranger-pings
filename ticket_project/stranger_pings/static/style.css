@@ -1,17 +1,38 @@
 body {
   background: black;
+  color: red;
 }
 
 .jumbotron {
-  background-image: url('stranger-pings.png');
-  background-size: cover;
-  background-position: center center;
   min-height: 80%;
   position: relative;
+}
+
+.homebackground {
+  background-image: url('stranger-pings.png');
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.loginbackground {
+  background-image: url('login-page.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.registerbackground {
+  background-image: url('register-page.png');
+  background-position: center center;
+  background-size: cover;
 }
 
 .absolutebuttons {
   bottom: 10%;
   position: absolute;
   right: 10%;
+}
+.loginform {
+  text-align: center;
+  /*margin-right: 30%;*/
 }
