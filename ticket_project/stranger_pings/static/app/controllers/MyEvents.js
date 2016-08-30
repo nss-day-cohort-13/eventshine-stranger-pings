@@ -1,19 +1,19 @@
-app.controller("MyEvents", function($scope, $http, $location) {
-  const myEvents = this;
+app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFactory) {
 
-  myEvents.title = "this is a my events page.";
-  myEvents.dettitle = "this is a my events page.";
-  myEvents.clicked_event = 1;
+  const myCtrl = this;
 
-  myEvents.goToAllEvents= () => {
-    console.log("going to all events page.");
-    $location.path(`/events`);
-  };
 
-  myEvents.goToEventDetail = () => {
-    console.log("going to event detail page.");
-    $location.path(`/events/${myEvents.clicked_event}`);
-  };
+  VenueFactory.fetchAllVenues()
+    .then((res) => {
+      $scope.venues = res.data;
+      VenueFactory.setAllVenues(res.data);
+    });
+
+  MyEventsFactory.fetchMyEvents()
+    .then((res) => {
+      $scope.myEvents = res.data;
+      MyEventsFactory.setMyEvents(res.data);
+    });
 
   myEvents.createEvent = () => {
     console.log("going to create page, passing 'event'.");
@@ -25,7 +25,16 @@ app.controller("MyEvents", function($scope, $http, $location) {
     $location.path(`myevents/venue/`);
   };
 
-  myEvents.logOut = () => {
+  myCtrl.title = "My Events";
+
+  myCtrl.getVenueName = (key) => {
+    venue_filter = $scope.venues.filter((venue) => {
+      return venue.pk === key;
+    });
+    return venue_filter[0].fields.name;
+  }
+
+  myCtrl.logOut = () => {
     window.location.assign('/logout/');
   };
 });

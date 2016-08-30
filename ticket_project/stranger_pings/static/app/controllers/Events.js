@@ -1,32 +1,28 @@
-app.controller("Events", function($scope, $http, $location, AllEventFactory, eventData, VenueFactory, venueData) {
+app.controller("Events", function($scope, $http, $location, AllEventsFactory, VenueFactory) {
   const allEvents = this;
 
-  allEvents.events = eventData.data;
-  AllEventFactory.setAllEvents(eventData.data);
 
-  allEvents.venues = venueData.data;
-  VenueFactory.setAllVenues(venueData.data);
+  VenueFactory.fetchAllVenues()
+    .then((res) => {
+      $scope.venues = res.data;
+      VenueFactory.setAllVenues(res.data);
+    });
 
-  allEvents.title = "this is where you view all events.";
-  allEvents.dettitle = "this is an events detail view.";
-  allEvents.clicked_event = 1;
+  AllEventsFactory.fetchAllEvents()
+    .then((res) => {
+      $scope.events = res.data;
+      AllEventsFactory.setAllEvents(res.data);
+    });
+
+
+  allEvents.title = "Events";
 
   allEvents.getVenueName = (key) => {
-    venue_filter = allEvents.venues.filter((venue) => {
+    venue_filter = $scope.venues.filter((venue) => {
       return venue.pk === key;
     });
     return venue_filter[0].fields.name;
   }
-
-  allEvents.goToMyEvents = () => {
-    console.log("going to my events");
-    $location.path(`/myevents`);
-  };
-
-  allEvents.goToEventDetail = () => {
-    console.log("going to an event detail.");
-    $location.path(`/events/${allEvents.clicked_event}`);
-  };
 
   allEvents.goToHome = () => {
     window.location.assign('/logout/');
