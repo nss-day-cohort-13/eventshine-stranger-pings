@@ -1,11 +1,11 @@
-<h1>## create.title ##</h1>
+<h1>Create An Event</h1>
 
 <div class="container-fluid">
   <form ng-submit="create.completeCreation()">
     <div class="form-group row">
       <label class="col-xs-2 col-form-label" for="name">Event Name</label>
         <div class="col-xs-10">
-          <input class="form-control" type="text" size="35" maxlength="50" id="name" ng-model="create.name">
+          <input class="form-control" type="text" id="name" ng-model="create.name">
          </div> 
     </div>
     <div class="form-group row">
@@ -42,7 +42,7 @@
     <div class="form-group row">
       <label class="col-xs-2 col-form-label" for="venues">Event Venue</label>
         <div class="col-xs-10">
-          <select class="form-control" ng-model="create.venue" ng-options={{create.venues.name}}></select>
+          <select class="form-control" ng-model="create.venue" ng-options="venue as venue.fields['name'] for venue in create.venues"></select>
         </div>
     </div>
     <input class="btn btn-success" type="submit" value="submit" />

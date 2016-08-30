@@ -28,11 +28,15 @@ const app = angular
         controller: "MyEvents",
         controllerAs: "myCtrl"
       })
-      // TODO: add a 'create a venue' controller.
       .when("/myevents/create/", {
         templateUrl: "../../static/app/partials/create.html",
         controller: "Create",
         controllerAs: "create"
+      })
+      .when("/myevents/venue/", {
+        templateUrl: "../../static/app/partials/venue.html",
+        controller: "Venue",
+        controllerAs: "venue"
       })
       .otherwise("/events");
   });

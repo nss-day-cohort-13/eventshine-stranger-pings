@@ -8,6 +8,7 @@ event_patterns = [
   url(r'^user/$', views.ReturnUserEvents),
   url(r'^create/$', views.receive_event_form),
   url(r'^(?P<event_id>[0-9]*)/$', views.ReturnSingleEvent)
+  url(r'^venue/$', views.receive_venue_form),
 ]
 
 venue_patterns = [
