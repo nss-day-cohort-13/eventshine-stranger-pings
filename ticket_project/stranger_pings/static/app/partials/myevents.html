@@ -4,8 +4,8 @@
 
 <div class="container-fluid" ng-if="myEvents.length >0">
   <div class="row">
-    <div class="col col-xs-3">
-      <div class="eventcard" ng-repeat="event in myEvents">
+    <div class="col col-xs-3" ng-repeat="event in myEvents">
+      <div class="eventcard">
         <a href="#/events/##event.pk##">
           <h4>EVENT</h4>
           <p>## event.fields.name ##</p>
