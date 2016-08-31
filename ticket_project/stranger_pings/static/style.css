@@ -8,6 +8,12 @@ body {
   position: relative;
 }
 
+.absolutebuttons {
+  bottom: 0;
+  position: absolute;
+  right: 10%;
+}
+
 .centeredform {
   text-align: center;
 }
@@ -48,6 +54,13 @@ body {
 
 .addvenuebackground {
   background-image: url('add-venue.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
+
+.createeventbackground {
+  background-image: url('create-event.jpg');
   background-position: center center;
   background-size: cover;
   min-height: 32vh;
