@@ -15,7 +15,7 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
       MyEventsFactory.setMyEvents(res.data);
     });
 
-  
+
   myCtrl.createEvent = () => {
     $location.path(`/myevents/create/`);
   };
@@ -32,6 +32,10 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
     });
     return venue_filter[0].fields.name;
   };
+
+  myCtrl.goToDetail = (key) => {
+    $location.path(`/events/${key}`);
+  }
 
   myCtrl.logOut = () => {
     window.location.assign('/logout/');
