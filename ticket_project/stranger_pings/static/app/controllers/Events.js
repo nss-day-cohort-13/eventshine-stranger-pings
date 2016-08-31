@@ -26,7 +26,7 @@ app.controller("Events", function($scope, $http, $location, $interval, AllEvents
   }
 
   loadAllEventData();
-  $interval(loadAllEventData, 10000);
+  $interval(loadAllEventData, 30000);
 
 
   allEvents.getVenueName = (key) => {
