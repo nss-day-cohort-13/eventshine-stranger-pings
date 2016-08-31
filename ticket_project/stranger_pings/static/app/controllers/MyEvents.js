@@ -15,16 +15,6 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
       MyEventsFactory.setMyEvents(res.data);
     });
 
-  myEvents.createEvent = () => {
-    console.log("going to create page, passing 'event'.");
-    $location.path(`/myevents/create/`);
-  };
-
-  myEvents.createVenue = () => {
-    console.log("going to create page, passing 'venue'.");
-    $location.path(`myevents/venue/`);
-  };
-
   myCtrl.title = "My Events";
 
   myCtrl.getVenueName = (key) => {
