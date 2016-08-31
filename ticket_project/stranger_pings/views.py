@@ -161,6 +161,11 @@ def receive_event_form(request):
                                       address=address,
                                       venue_id=venue["pk"])
     event.save()
+
+    user = request.user
+    u = UserEvent.objects.create(user=user, event=event, creator=True)
+    u.save()
+
     return HttpResponseRedirect("/")
 
 

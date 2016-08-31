@@ -1,5 +1,17 @@
 
 <div class="jumbotron alleventsbackground">
+  <h3>Current</h3>
+  <div ng-repeat="event in currentEvents">
+    <p><strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong></p>
+    <p>## allEvents.getVenueName(event.fields.venue) ##</p>
+    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
+  </div>
+  <h3>Past</h3>
+  <div ng-repeat="event in pastEvents">
+    <p><strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong></p>
+    <p>## allEvents.getVenueName(event.fields.venue) ##</p>
+    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
+  </div>
 </div>
 
 <div class="container-fluid">
