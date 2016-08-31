@@ -6,8 +6,12 @@ from django.views import generic
 event_patterns = [
   url(r'^all/$', views.ReturnAllEvents),
   url(r'^user/$', views.ReturnUserEvents),
+  url(r'^user/(?P<event_id>[0-9]*)$', views.ReturnSingleUserEvent),
+  url(r'^registrations/(?P<event_id>[0-9]*)$', views.ReturnAllRegistered),
   url(r'^create/$', views.receive_event_form),
   url(r'^(?P<event_id>[0-9]*)/$', views.ReturnSingleEvent),
+  url(r'^register/(?P<event_id>[0-9]*)/$', views.RegisterEvent),
+  url(r'^unregister/(?P<event_id>[0-9]*)/$', views.UnregisterEvent),
   url(r'^venue/$', views.receive_venue_form),
 ]
 
