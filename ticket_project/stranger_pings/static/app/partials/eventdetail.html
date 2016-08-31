@@ -1,20 +1,25 @@
-<h1>## eventDetail.thisEvent.fields.name ##</h1>
-
-<div ng-repeat="event in thisEvent">
-    <h2>## event.fields.name ##</h2>
-    <p>## eventDetail.getVenueName(event.fields.venue) ##</p>
-    <p>## event.fields.address ##</p>
-    <p>Begins: ## event.fields.begin_date_time|dateFormat ##</p>
-    <p>Ends: ## event.fields.end_date_time|dateFormat ##</p>
-    <p>Tickets left: ## tix_left ##</p>
+<div class="jumbotron aneventbackground">
 </div>
 
-<form>
-  <strong>Register</strong>
-  <br>
-  <switch ng-change="eventDetail.toggleRegister()" id="enabled" name="enabled" ng-model="registered" class="green"></switch>
-</form>
+<div class="detailcard">
+  <div ng-repeat="event in thisEvent">
+      <h2>## event.fields.name ##</h2>
+      <p>## eventDetail.getVenueName(event.fields.venue) ##</p>
+      <p>## event.fields.address ##</p>
+      <p>Begins: ## event.fields.begin_date_time|dateFormat ##</p>
+      <p>Ends: ## event.fields.end_date_time|dateFormat ##</p>
+      <p>Tickets left: ## tix_left ##</p>
+  </div>
 
-<button ng-click="eventDetail.detailBack('all')">Go Back to All Events</button>
-<button ng-click="eventDetail.detailBack('my')">Go Back to My Events</button>
-<button ng-click="eventDetail.logOut()">Log Out and Go To Home</button>
+  <form>
+    <strong ng-if="registered == true">Unregister</strong>
+    <strong ng-if="registered == false">Register</strong>
+    <br>
+    <switch ng-change="eventDetail.toggleRegister()" id="enabled" name="enabled" ng-model="registered" class="green"></switch>
+  </form>
+</div>
+<div class="centeredform">
+  <button class="btn btn-lg btn-danger" ng-click="eventDetail.detailBack('all')">Go Back to All Events</button>
+  <button class="btn btn-lg btn-danger" ng-click="eventDetail.detailBack('my')">Go Back to My Events</button>
+  <button class="btn btn-lg btn-danger" ng-click="eventDetail.logOut()">Log Out and Go To Home</button>
+</div>
