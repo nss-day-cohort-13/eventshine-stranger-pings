@@ -9,9 +9,14 @@ body {
 }
 
 .absolutebuttons {
-  bottom: 0;
+  bottom: -100;
   position: absolute;
   right: 10%;
+}
+
+.btn-stranger {
+  color: lightgrey;
+  background-color: #df3203;
 }
 
 .centeredform {
