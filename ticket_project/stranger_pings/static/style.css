@@ -74,6 +74,8 @@ body {
   margin: 15px;
   padding: 20px;
   text-align: center;
+  height: 280px;
+  overflow-y: scroll;
 }
 
 .eventcard:hover {

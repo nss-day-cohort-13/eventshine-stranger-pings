@@ -1,22 +1,12 @@
 
 <div class="jumbotron alleventsbackground">
-  <h3>Current</h3>
-  <div ng-repeat="event in currentEvents">
-    <p><strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong></p>
-    <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
-  </div>
-  <h3>Past</h3>
-  <div ng-repeat="event in pastEvents">
-    <p><strong><a href="#/events/##event.pk##">## event.fields.name ##</a></strong></p>
-    <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-    <p>Time: ## event.fields.begin_date_time|dateFormat ##</p>
-  </div>
 </div>
 
+
+<h3>Current</h3>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col col-xs-3" ng-repeat="event in events">
+  <div class="row" ng-if="currentEvents.length >0">
+    <div class="col col-xs-3" ng-repeat="event in currentEvents">
       <div class="eventcard">
         <a href="#/events/##event.pk##">
           <h4>EVENT</h4>
@@ -29,7 +19,26 @@
       </div>
     </div>
   </div>
+  <h3 class="alert">No Current Events</h3>
+</div>
 
+<h3>Past</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-xs-3" ng-repeat="event in pastEvents">
+      <div class="eventcard">
+        <a href="#/events/##event.pk##">
+          <h4>EVENT</h4>
+          <p>## event.fields.name ##</p>
+          <h4>VENUE</h4>
+          <p>## allEvents.getVenueName(event.fields.venue) ##</p>
+          <h4>DATE</h4>
+          <p>## event.fields.begin_date_time|dateFormat ##</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="centeredform">
   <a class="btn btn-lg btn-danger" href="#/myevents">Go To My Events</a>
   <button class="btn btn-danger btn-lg" ng-click="allEvents.goToHome()">Log Out and Go To Home</button>
