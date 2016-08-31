@@ -6,24 +6,24 @@ app.controller("Events", function($scope, $http, $location, AllEventsFactory, Ve
     .then((res) => {
       $scope.venues = res.data;
       VenueFactory.setAllVenues(res.data);
+    AllEventsFactory.fetchAllEvents()
+      .then((res) => {
+        events = res.data;
+        AllEventsFactory.setAllEvents(res.data);
+        $scope.currentEvents = events.filter((event) => {
+          date = Date.now();
+          event_date = Date.parse(event.fields.begin_date_time);
+          return event_date >= date;
+        });
+        $scope.pastEvents = events.filter((event) => {
+          date = Date.now();
+          now = Date.parse(date);
+          event_date = Date.parse(event.fields.begin_date_time);
+          return event_date <= date;
+        });
+      });
     });
 
-  AllEventsFactory.fetchAllEvents()
-    .then((res) => {
-      events = res.data;
-      AllEventsFactory.setAllEvents(res.data);
-      $scope.currentEvents = events.filter((event) => {
-        date = Date.now();
-        event_date = Date.parse(event.fields.begin_date_time);
-        return event_date >= date;
-      });
-      $scope.pastEvents = events.filter((event) => {
-        date = Date.now();
-        now = Date.parse(date);
-        event_date = Date.parse(event.fields.begin_date_time);
-        return event_date <= date;
-      });
-    });
 
 
   allEvents.title = "Events";
