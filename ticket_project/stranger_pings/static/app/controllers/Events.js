@@ -48,6 +48,10 @@ app.controller("Events", function($scope, $http, $location, $interval, AllEvents
     return event.begin_date_time <= now;
   }
 
+  allEvents.goToDetail = (key) => {
+    $location.path(`/events/${key}`);
+  }
+
   allEvents.goToHome = () => {
     window.location.assign('/logout/');
   };
