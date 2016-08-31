@@ -15,14 +15,23 @@ app.controller("MyEvents", function($scope, $location, MyEventsFactory, VenueFac
       MyEventsFactory.setMyEvents(res.data);
     });
 
+  
+  myCtrl.createEvent = () => {
+    $location.path(`/myevents/create/`);
+  };
+
+  myCtrl.createVenue = () => {
+    $location.path(`myevents/venue/`);
+  };
+
   myCtrl.title = "My Events";
 
   myCtrl.getVenueName = (key) => {
-    venue_filter = $scope.venues.filter((venue) => {
+    const venue_filter = $scope.venues.filter((venue) => {
       return venue.pk === key;
     });
     return venue_filter[0].fields.name;
-  }
+  };
 
   myCtrl.logOut = () => {
     window.location.assign('/logout/');

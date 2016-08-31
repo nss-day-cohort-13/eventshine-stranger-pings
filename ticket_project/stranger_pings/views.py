@@ -151,6 +151,7 @@ def receive_event_form(request):
     tix_limit = obj["capacity"]
     address = obj["address"]
     venue = obj["venue"]
+    print(venue)
 
     event = Event.objects.create(name=name,
                                       description=description,

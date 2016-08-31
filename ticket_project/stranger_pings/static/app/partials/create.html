@@ -1,52 +1,53 @@
-<h1>Create An Event</h1>
+<div class="jumbotron createeventbackground">
+</div>
 
 <div class="container-fluid">
   <form ng-submit="create.completeCreation()">
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="name">Event Name</label>
-        <div class="col-xs-10">
-          <input class="form-control" type="text" id="name" ng-model="create.name">
-         </div> 
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="description">Event Description</label>
-        <div class="col-xs-10">
-          <textarea id="description" ng-model="create.description">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="row">
+          <input class="form-control" type="text" id="name" ng-model="create.name" placeholder="Event Title">
+        </div>
+        <div class="row">
+          <textarea class="form-control" id="description" ng-model="create.description" placeholder="Event Description">
           </textarea>
         </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="startTime">Event Start Time</label>
-        <div class="col-xs-10">
-          <input type="datetime-local" id="startTime" ng-model="create.startTime">
+        <div class="row">
+          <input class="form-control" type="text" id="address" ng-model="create.address" placeholder="Event Address">
         </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="endTime">Event End Time</label>
-        <div class="col-xs-10">
-          <input type="datetime-local" id="endTime" ng-model="create.endTime">
+      </div>
+      <div class="col-xs-6">
+        <div class="container-fluid">
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="startTime">Event Start Time</label>
+            <div class="col-xs-10">
+              <input type="datetime-local" id="startTime" ng-model="create.startTime">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="endTime">Event End Time</label>
+            <div class="col-xs-10">
+              <input type="datetime-local" id="endTime" ng-model="create.endTime">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="capacity">Event Capacity</label>
+            <div class="col-xs-10">
+              <input type="number" id="capacity" ng-model="create.capacity">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xs-2 col-form-label" for="venues">Event Venue</label>
+            <div class="col-xs-10">
+              <select class="form-control" ng-model="create.venue" ng-options="venue as venue.fields['name'] for venue in create.venues"></select>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="capacity">Event Capacity</label>
-        <div class="col-xs-10">
-          <input type="number" id="capacity" ng-model="create.capacity">
-        </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="address">Event Address</label>
-        <div class="col-xs-10">
-          <input type="text" id="address" ng-model="create.address">
-        </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="venues">Event Venue</label>
-        <div class="col-xs-10">
-          <select class="form-control" ng-model="create.venue" ng-options="venue as venue.fields['name'] for venue in create.venues"></select>
-        </div>
-    </div>
-    <input class="btn btn-success" type="submit" value="submit" />
+      </div> 
+    </div>   
+    <input class="btn btn-lg btn-danger" type="submit" value="Submit" />
+    <button class="btn btn-lg btn-danger" ng-click="create.goToMyEvents()">Go Back To My Events</button>
+    <button class="btn btn-lg btn-danger" ng-click="create.logOut()">Log Out and Go To Home</button>
   </form>
 </div>
-<button class="btn btn-warning" ng-click="create.goToMyEvents()">Go Back To My Events</button>
-<button class="btn btn-warning" ng-click="create.logOut()">Log Out and Go To Home</button>
+

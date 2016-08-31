@@ -25,15 +25,12 @@ app.controller("Events", function($scope, $http, $location, AllEventsFactory, Ve
     });
 
 
-
-  allEvents.title = "Events";
-
   allEvents.getVenueName = (key) => {
     venue_filter = $scope.venues.filter((venue) => {
       return venue.pk === key;
     });
     return venue_filter[0].fields.name;
-  }
+  };
 
   allEvents.currentFilter = (event) => {
     date = new Date();
@@ -52,7 +49,6 @@ app.controller("Events", function($scope, $http, $location, AllEventsFactory, Ve
   };
 
   allEvents.detailBack = (allOrMy) =>{
-    console.log("going back. will pass whether the user clicked 'my events' or 'all events' back button here.");
     if (allOrMy === "all") {
       $location.path(`/events`);
     }

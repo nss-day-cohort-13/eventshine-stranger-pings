@@ -1,15 +1,15 @@
-<h1>## venue.title ##</h1>
+<div class="jumbotron addvenuebackground">
+</div>
 
-<div class="container-fluid">
-  <form ng-submit="venue.completeCreation()">
-    <div class="form-group row">
-      <label class="col-xs-2 col-form-label" for="name">Venue Name</label>
-      <div class="col-xs-10">
-        <input class="form-control" type="text" id="name" ng-model="venue.name">
-      </div>
-    </div> 
-    <input class="btn btn-success" type="submit" value="submit" /> 
+
+  <form class="form-inline centeredform" ng-submit="venue.completeCreation()">
+    <div class="form-group ">
+      <input class="input-lg" type="text" id="name" ng-model="venue.name" placeholder="Venue Name">
+    </div>
+    <div class="form-group"> 
+      <input class="btn btn-danger btn-lg" type="submit" value="Submit" /> 
+      <a class="btn btn-danger btn-lg" href="#/myevents">Go Back To My Events</a>
+      <button class="btn btn-danger btn-lg" ng-click="venue.logOut()">Log Out and Go To Home</button>
+    </div>
   </form>
 </div>
-<button class="btn btn-warning" ng-click="venue.goToMyEvents()">Go Back To My Events</button>
-<button class="btn btn-warning" ng-click="venue.logOut()">Log Out and Go To Home</button>

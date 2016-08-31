@@ -1,0 +1,93 @@
+body {
+  background: black;
+  box-sizing: border-box;
+}
+
+.jumbotron {
+  min-height: 80%;
+  position: relative;
+}
+
+.absolutebuttons {
+  bottom: 0;
+  position: absolute;
+  right: 10%;
+}
+
+.centeredform {
+  text-align: center;
+}
+
+/*Background stuff.*/
+
+.homebackground {
+  background-image: url('stranger-pings.png');
+  background-position: center center;
+  background-size: cover;
+}
+
+.loginbackground {
+  background-image: url('login-page.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.registerbackground {
+  background-image: url('register-page.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.alleventsbackground {
+  background-image: url('all-events.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
+
+.myeventsbackground {
+  background-image: url('my-events.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
+
+.addvenuebackground {
+  background-image: url('add-venue.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
+
+.createeventbackground {
+  background-image: url('create-event.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 32vh;
+}
+
+/*Event Cards.*/
+
+.eventcard {
+  background-color: white;
+  border: 2px solid transparent;
+  margin: 15px;
+  padding: 20px;
+  text-align: center;
+}
+
+.eventcard:hover {
+  border: 2px solid red;
+}
+
+.eventcard a h4 {
+  border-bottom: 1px solid red;
+}
+.eventcard a p,h4{
+  color: black;
+}
+
+.alert {
+  color: red;
+  font-size: 3em;
+}
