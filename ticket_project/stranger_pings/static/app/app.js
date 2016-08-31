@@ -1,5 +1,5 @@
 const app = angular
-  .module("stranger_pings", ["ngRoute"])
+  .module("stranger_pings", ['ngRoute', 'uiSwitch'])
   .config(function($interpolateProvider, $routeProvider, $httpProvider) {
     $interpolateProvider.startSymbol('##');
     $interpolateProvider.endSymbol('##');
