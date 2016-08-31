@@ -66,13 +66,22 @@ body {
   min-height: 32vh;
 }
 
+.aneventbackground {
+  background-image: url('an-event.jpg');
+  background-position: center center;
+  background-size: cover;
+  min-height: 35vh;
+}
+
 /*Event Cards.*/
 
 .eventcard {
   background-color: white;
   border: 2px solid transparent;
-  margin: 15px;
+  height: 280px;
+  margin: 15px
   padding: 20px;
+  overflow-y: scroll;
   text-align: center;
 }
 
@@ -90,4 +99,16 @@ body {
 .alert {
   color: red;
   font-size: 3em;
+}
+
+/*detail card.*/
+
+.detailcard {
+  background-color: white;
+  border: 2px solid red;
+  height: 280px;
+  margin: 15px 10%;
+  overflow-y: scroll;
+  padding: 20px;
+  text-align: center;
 }
