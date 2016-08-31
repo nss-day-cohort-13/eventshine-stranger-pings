@@ -3,38 +3,42 @@
 </div>
 
 
-<h3>Current</h3>
-<div class="container-fluid">
+<div class="container">
+  <h2>Current</h2>
   <div class="row" ng-if="currentEvents.length >0">
-    <div class="col col-xs-3" ng-repeat="event in currentEvents">
-      <div class="eventcard">
-        <a href="#/events/##event.pk##">
-          <h4>EVENT</h4>
-          <p>## event.fields.name ##</p>
-          <h4>VENUE</h4>
-          <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-          <h4>DATE</h4>
-          <p>## event.fields.begin_date_time|dateFormat ##</p>
-        </a>
+    <div class="col col-xs-4" ng-repeat="event in currentEvents">
+      <div class="eventcard" ng-click="allEvents.goToDetail(event.pk)">
+        <h3>## event.fields.name ##</h3>
+        <dl>
+          <dt>Where</dt>
+          <dd>## allEvents.getVenueName(event.fields.venue) ##</dd>
+          <dt>When</dt>
+          <dd>## event.fields.begin_date_time|dateFormat ##</dd>
+          <dt>What</dt>
+          <dd>## event.fields.description|descFormat ##</dd>
+        </dl>
+        <button ng-click="allEvents.goToDetail(event.pk)" class="btn btn-danger">Check it out</button>
       </div>
     </div>
   </div>
   <h3 class="alert" ng-show="##currentEvents.length > 0##">No Current Events</h3>
 </div>
 
-<h3>Past</h3>
-<div class="container-fluid">
+<div class="container">
+  <h2>Past</h2>
   <div class="row">
-    <div class="col col-xs-3" ng-repeat="event in pastEvents">
-      <div class="eventcard">
-        <a href="#/events/##event.pk##">
-          <h4>EVENT</h4>
-          <p>## event.fields.name ##</p>
-          <h4>VENUE</h4>
-          <p>## allEvents.getVenueName(event.fields.venue) ##</p>
-          <h4>DATE</h4>
-          <p>## event.fields.begin_date_time|dateFormat ##</p>
-        </a>
+    <div class="col col-xs-4" ng-repeat="event in pastEvents">
+      <div class="eventcard" ng-click="allEvents.goToDetail(event.pk)">
+        <h3>## event.fields.name ##</h3>
+        <dl>
+          <dt>Where</dt>
+          <dd>## allEvents.getVenueName(event.fields.venue) ##</dd>
+          <dt>When</dt>
+          <dd>## event.fields.begin_date_time|dateFormat ##</dd>
+          <dt>What</dt>
+          <dd>## event.fields.description|descFormat ##</dd>
+        </dl>
+        <button ng-click="allEvents.goToDetail(event.pk)" class="btn btn-danger">Check it out</button>
       </div>
     </div>
   </div>
@@ -44,3 +48,9 @@
   <button class="btn btn-stranger btn-lg" ng-click="allEvents.goToHome()">Log Out and Go To Home</button>
 </div>
 
+<!--
+    name
+    venue
+    begin_date_time
+    description (filtered)
+-->

@@ -23,6 +23,10 @@ body {
   text-align: center;
 }
 
+h2 {
+  color: #FFF;
+}
+
 /*Background stuff.*/
 
 .homebackground {
@@ -91,22 +95,39 @@ body {
 .eventcard {
   background-color: white;
   border: 2px solid transparent;
-  height: 280px;
-  margin: 15px
+  border-radius: 3px;
+  box-shadow: 0 3px 5px rgba(0,0,0,.5);
+  height: 350px;
+  margin: 10px;
   padding: 20px;
   overflow-y: scroll;
-  text-align: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .eventcard:hover {
   border: 2px solid red;
 }
 
-.eventcard a h4 {
+.eventcard h3 {
   border-bottom: 1px solid red;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
-.eventcard a p,h4{
+
+.eventcard dd {
+  margin-bottom: 20px;
+}
+
+.eventcard p, h3{
   color: black;
+}
+
+.eventcard button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 
 .alert {
