@@ -1,28 +1,32 @@
-app.controller("Events", function($scope, $http, $location, AllEventsFactory, VenueFactory) {
+app.controller("Events", function($scope, $http, $location, $interval, AllEventsFactory, VenueFactory) {
   const allEvents = this;
 
-
-  VenueFactory.fetchAllVenues()
-    .then((res) => {
-      $scope.venues = res.data;
-      VenueFactory.setAllVenues(res.data);
-    AllEventsFactory.fetchAllEvents()
+  function loadAllEventData() {
+    VenueFactory.fetchAllVenues()
       .then((res) => {
-        events = res.data;
-        AllEventsFactory.setAllEvents(res.data);
-        $scope.currentEvents = events.filter((event) => {
-          date = Date.now();
-          event_date = Date.parse(event.fields.begin_date_time);
-          return event_date >= date;
-        });
-        $scope.pastEvents = events.filter((event) => {
-          date = Date.now();
-          now = Date.parse(date);
-          event_date = Date.parse(event.fields.begin_date_time);
-          return event_date <= date;
+        $scope.venues = res.data;
+        VenueFactory.setAllVenues(res.data);
+      AllEventsFactory.fetchAllEvents()
+        .then((res) => {
+          events = res.data;
+          AllEventsFactory.setAllEvents(res.data);
+          $scope.currentEvents = events.filter((event) => {
+            date = Date.now();
+            event_date = Date.parse(event.fields.begin_date_time);
+            return event_date >= date;
+          });
+          $scope.pastEvents = events.filter((event) => {
+            date = Date.now();
+            now = Date.parse(date);
+            event_date = Date.parse(event.fields.begin_date_time);
+            return event_date <= date;
+          });
         });
       });
-    });
+  }
+
+  loadAllEventData();
+  $interval(loadAllEventData, 10000);
 
 
   allEvents.getVenueName = (key) => {
