@@ -59,15 +59,9 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   }
 
   eventDetail.toggleRegister = () => {
-    if ($scope.registered === true) {
-      // This is set back to its original value because the switch
-      // automatically toggles true/false, but the app should wait
-      // for the success from the database to update this value.
-      $scope.registered = false
+    if ($scope.registered === false) {
       eventDetail.register();
     } else {
-      // See note above
-      $scope.registered = true
       eventDetail.unregister();
     }
   }
