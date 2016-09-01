@@ -2,15 +2,22 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
 
   const eventDetail = this;
 
+  // Loads venue names so that when the events render on the page,
+  // the venue names can by matched using the venue ID on the event
   VenueFactory.fetchAllVenues()
     .then((res) => {
       $scope.venues = res.data;
     })
 
   EventDetailFactory.fetchSingleEvent($routeParams.event)
+    // Fetches the full event object associated with the event ID
+    // passed in through $routeParams
     .then((res) => {
       $scope.thisEvent = res.data;
       EventDetailFactory.fetchAllRegistrations($routeParams.event)
+      // Fetches all UserEvent objects associate with the event to
+      // count the number of registrations and display the number
+      // of tickets left
         .then((res) => {
           num_registered = res.data.length;
           $scope.tix_left = $scope.thisEvent[0].fields.tix_limit - num_registered;
@@ -18,6 +25,10 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
     })
 
   EventDetailFactory.fetchUserEvent($routeParams.event)
+    // Queries the database for a UserEvent matching the current event
+    // and the user ID of the logged in user
+    // If such a UserEvent exists, the user is registered
+    // If not, the user is not registered
     .then((res) => {
       if (res.data.length === 1) {
         $scope.registered = true;
@@ -28,6 +39,8 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
 
 
   eventDetail.getVenueName = (key) => {
+    // Match the venue ID on the event object with a venue saved
+    // in $scope.venues
     venue_filter = $scope.venues.filter((venue) => {
       return venue.pk === key;
     });
@@ -35,6 +48,10 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   }
 
   eventDetail.register = () => {
+    // Requests that the database create a new UserEvent object
+    // to register the user for the event
+    // If successful, set $scope.registered to true and subtract
+    // from the tickets remaining
     EventDetailFactory.eventRegister($routeParams.event)
       .then((res) => {
         if (res.data.success) {
@@ -47,6 +64,10 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   }
 
   eventDetail.unregister = () => {
+    // Requests that the database delete a UserEvent object
+    // to unregister the user for the event
+    // If successful, set $scope.registered to false and add
+    // to the tickets remaining
     EventDetailFactory.eventUnregister($routeParams.event)
       .then((res) => {
         if (res.data.success) {
@@ -59,6 +80,8 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
   }
 
   eventDetail.toggleRegister = () => {
+    // Checks $scope.registered to see whether register()
+    // or unregister() should be called
     if ($scope.registered === false) {
       eventDetail.register();
     } else {
@@ -66,16 +89,8 @@ app.controller('EventDetailCtrl', function($scope, $routeParams, $location, $tim
     }
   }
 
-  eventDetail.detailBack = (allOrMy) => {
-    if (allOrMy === 'all') {
-      $location.path(`/events`);
-    }
-    else {
-      $location.path(`/myevents`);
-    }
-  }
-
   eventDetail.logOut = () => {
+    // Logs out the current user
     window.location.assign('/logout/');
   };
 
