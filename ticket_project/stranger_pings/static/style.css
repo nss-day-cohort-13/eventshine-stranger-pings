@@ -1,5 +1,5 @@
 body {
-  background: black;
+  background: #777;
   box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 h2 {
-  color: #FFF;
+  color: #df3203;
 }
 
 /*Background stuff.*/
@@ -94,7 +94,7 @@ h2 {
 
 .eventcard {
   background-color: white;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: 0 3px 5px rgba(0,0,0,.5);
   height: 350px;
@@ -106,17 +106,18 @@ h2 {
 }
 
 .eventcard:hover {
-  border: 2px solid red;
+  border: 1px solid red;
 }
 
-.eventcard h3 {
+.eventcard h3,
+.detailcard h3 {
   border-bottom: 1px solid red;
   padding-bottom: 5px;
   margin-top: 0;
   margin-bottom: 20px;
 }
 
-.eventcard dd {
+dd {
   margin-bottom: 20px;
 }
 
@@ -140,9 +141,6 @@ h2 {
 .detailcard {
   background-color: white;
   border: 2px solid red;
-  height: 280px;
   margin: 15px 10%;
-  overflow-y: scroll;
   padding: 20px;
-  text-align: center;
 }

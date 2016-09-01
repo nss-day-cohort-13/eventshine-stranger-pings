@@ -1,22 +1,35 @@
 <div class="jumbotron aneventbackground">
 </div>
 
-<div class="detailcard">
+<div class="detailcard row">
   <div ng-repeat="event in thisEvent">
-      <h2>## event.fields.name ##</h2>
-      <p>## eventDetail.getVenueName(event.fields.venue) ##</p>
-      <p>## event.fields.address ##</p>
-      <p>Begins: ## event.fields.begin_date_time|dateFormat ##</p>
-      <p>Ends: ## event.fields.end_date_time|dateFormat ##</p>
-      <p>Tickets left: ## tix_left ##</p>
+    <h3>## event.fields.name ##</h3>
+    <div class="column col-lg-8">
+      <dl>
+        <dt>Venue</dt>
+        <dd>## eventDetail.getVenueName(event.fields.venue) ##</dd>
+        <dt>Address</dt>
+        <dd>## event.fields.address ##</dd>
+        <dt>Starts at:</dt>
+        <dd>## event.fields.begin_date_time|dateFormat ##</dd>
+        <dt>Ends at:</dt>
+        <dd>## event.fields.end_date_time|dateFormat ##</dd>
+      </dl>
+    </div>
+    <div class="column col-lg-4">
+      <dt>Description:</dt>
+      <dd>## event.fields.description ##</dd>
+      <dt>Tickets left:</dt>
+      <dd>## tix_left ##</dd>
+      <form>
+        <strong ng-if="registered == true">Unregister</strong>
+        <strong ng-if="registered == false">Register</strong>
+        <br>
+        <switch ng-change="eventDetail.toggleRegister()" id="enabled" name="enabled" ng-model="registered" class="green"></switch>
+      </form>
+    </div>
   </div>
 
-  <form>
-    <strong ng-if="registered == true">Unregister</strong>
-    <strong ng-if="registered == false">Register</strong>
-    <br>
-    <switch ng-change="eventDetail.toggleRegister()" id="enabled" name="enabled" ng-model="registered" class="green"></switch>
-  </form>
 </div>
 <div class="centeredform">
   <button class="btn btn-lg btn-stranger" ng-click="eventDetail.detailBack('all')">Go Back to All Events</button>
